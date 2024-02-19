@@ -1,0 +1,16 @@
+# packages
+deb http://deb.debian.org/debian bookworm main non-free-firmware
+deb http://deb.debian.org/debian bookworm-updates main non-free-firmware
+deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
+
+# sources
+deb-src http://deb.debian.org/debian sid main non-free-firmware
+deb-src http://deb.debian.org/debian buster main non-free-firmware
+
+deb-src http://deb.debian.org/debian bullseye main non-free-firmware
+deb-src http://deb.debian.org/debian bullseye-updates main non-free-firmware
+deb-src http://security.debian.org/debian-security bullseye-security main non-free-firmware
+
+deb-src http://deb.debian.org/debian bookworm main non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main non-free-firmware
+deb-src http://deb.debian.org/debian-security bookworm-security main non-free-firmware
