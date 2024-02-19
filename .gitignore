@@ -20,7 +20,6 @@ a.out
 *.log
 
 .gdb_history
-.gdbinit
 
 build
 tags
