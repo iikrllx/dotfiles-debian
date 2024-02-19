@@ -1,0 +1,24 @@
+[preferences/view]
+color-scheme='oblivion'
+font-name='Unifont 18'
+highlight-current-line=false
+match-braces=false
+show-line-endings=false
+show-line-numbers=true
+show-right-margin=false
+show-whitespace=false
+tab-width=2
+use-default-monospace-font=false
+word-wrap=true
+
+[preferences/window]
+statusbar-visible=true
+
+[state/application]
+session=['1;;+']
+
+[state/window]
+fullscreen=false
+height=uint32 480
+maximized=false
+width=uint32 640
