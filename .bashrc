@@ -81,7 +81,7 @@ c-rnd-0()
 # use it for a hard password
 c-rnd-1()
 {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 28
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 28 && echo
 }
 
 # renames multiple files to random names
@@ -100,6 +100,17 @@ c-rename()
     else
         _to_stderr "usage: $ c-rename '<file-format>'"
     fi
+}
+
+# remove rc (removed but not purged) packages
+c-rm-rc()
+{
+    rc_packs=$(dpkg -l | grep '^rc' | awk '{print $2}')
+    for p in ${rc_packs[*]}; do
+        sudo apt-get purge -y $p
+        sudo apt-get autoremove -y
+        sudo apt-get autoclean
+    done
 }
 
 # .bash_history
