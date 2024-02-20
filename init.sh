@@ -1,11 +1,24 @@
 #!/bin/bash
 #
+# This main project script configures my Debian environment (dotfiles).
+# Configures the necessary tools for development and convenience.
+# Minimalistic environment and instruments with old school fonts.
 #
+# Be careful when running this script on your main machine,
+# it does not create backup dotfiles and may erase your current working environment.
+#
+# After the script execution need to reboot.
+# $ sudo reboot
 #
 
 set -ex
 
-if ! dpkg -l | awk '{print $2}' | grep ^eatmydata$ &>/dev/null; then
+check_package()
+{
+	dpkg -l | awk '{print $2}' | grep ^$1$ &>/dev/null && return 0 || return 1
+}
+
+if ! check_package eatmydata; then
 	>&2 echo "Please, install 'eatmydata' package"
 	exit 1
 fi
@@ -47,7 +60,7 @@ ftp()
 {
 	msg_to_stdout "FTP server configuration"
 
-	if ! dpkg -l | awk '{print $2}' | grep ^vsftpd$ &>/dev/null; then
+	if ! check_package vsftpd; then
 		sudo apt-get -y install vsftpd
 	fi
 
@@ -122,7 +135,7 @@ else
 
 		set +e
 		for p in ${packs[*]}; do
-			if ! dpkg -l | awk '{print $2}' | grep ^$p$ &>/dev/null; then
+			if ! check_package $p
 				sudo eatmydata apt-get -y install $p
 				echo -e "$?\n"
 			fi
@@ -186,13 +199,16 @@ else
 
 	# ----------------------------------
 
+	# XDG_DATA_DIRS not set in ssh session
 	#if echo "$XDG_DATA_DIRS" | grep 'xfce' &>/dev/null; then
+
+	if check_package xfce4-session; then
 		msg_to_stdout "Xfce configuration"
 		cp ./.config/xfce4/xfconf/xfce-perchannel-xml/* \
 		~/.config/xfce4/xfconf/xfce-perchannel-xml
 
 		msg_to_stdout "xfce4-terminal configuration"
-		if dpkg -l | awk '{print $2}' | grep ^xfce4-terminal$ &>/dev/null; then
+		if check_package xfce4-terminal; then
 			mkdir ~/.config/xfce4/terminal &>/dev/null | true
 			chmod 700 ~/.config/xfce4/terminal
 			cp ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
@@ -200,10 +216,10 @@ else
 			>&2 echo "Please, install 'xfce4-terminal' package"
 			exit 1
 		fi
-	#else
-	#	>&2 echo "Current desktop environment not 'xfce'"
-	#	exit 1
-	#fi
+	else
+		>&2 echo "Current desktop environment not 'xfce'"
+		exit 1
+	fi
 
 	# ----------------------------------
 
