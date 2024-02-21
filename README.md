@@ -4,13 +4,16 @@ old-school fonts, etc. There are not only dotfiles here, but also some normal fi
 
 I'm lazy, so there's a script [./init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 which configure my work environment automatically. Installs the necessary programs/packages, configures various
-development tools and the home environment. If you don't need Russian language in the interface, run the following
-command after running the script ```init.sh```.
+development tools, hotkeys, desktop environment, home directory, etc. If you don't need Russian language in the interface,
+run the following command after running the script ```init.sh```.
 ```
 $ echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
 ```
 
 I am using the latest stable version of Debian with Xfce. I like Xfce because there is nothing superfluous in it.
+
+![screenshot](./.local/share/example-b.png)
+![screenshot](./.local/share/example-a.png)
 
 ## Description of the environment
 - <strong>OS:</strong> ```Debian```
