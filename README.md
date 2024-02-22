@@ -53,3 +53,10 @@ px ibm vga9 regular
 unifont regular
 unifont-jp regular
 ```
+
+## Mousepad
+How export mousepad configuration ? Commands:
+```
+$ dconf dump /org/xfce/mousepad/ > mousepad.settings
+$ dconf load /org/xfce/mousepad/ < mousepad.settings
+```
