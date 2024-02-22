@@ -14,11 +14,11 @@ usage()
 {
 cat << EOF
 $(echo -e "\e[96mUsage: $(basename $0) [options]\e[0m")
-Git Control (simple git operations)
+Multiple Git Control (simple git operations)
 
-  --clone-my          clone my projects in current directory
-  --pull-my           pull from my projects. all branches
-  --status-my         status from my projects. current branch
+  --clone         clone my projects in current directory
+  --pull          pull from my projects. all branches
+  --status        status from my projects. current branch
 
 EOF
 
@@ -69,7 +69,7 @@ git_action()
 }
 
 case $1 in
-	'--clone-my')
+	'--clone')
 		private_projects=$(ssh rserver-git 'ls projects')
 		for name in ${private_projects[*]}; do
 			if [ ! -d $name ]; then
@@ -78,7 +78,7 @@ case $1 in
 			fi
 		done
 
-		public_projects=(binout typp bootstrap-env glibc-with-shred)
+		public_projects=(binout typp bootstrap-env dotfiles-debian glibc-with-shred)
 		for name in ${public_projects[*]}; do
 			if [ ! -d $name ]; then
 				git clone git@github.com:iikrllx/$name
@@ -87,8 +87,8 @@ case $1 in
 		done
 	;;
 
-	'--pull-my') git_action $myenv "Pull" "pull" ;;
-	'--status-my') git_action $myenv "Status" "status" ;;
+	'--pull') git_action $myenv "Pull" "pull" ;;
+	'--status') git_action $myenv "Status" "status" ;;
 
 	*) usage ;;
 esac
