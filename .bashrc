@@ -2,6 +2,10 @@ alias rmf='shred -uzn 4'
 alias rmd='wipe -rfqQ 8'
 alias ls='ls -1l --color'
 alias _date='date +"%d/%m/%Y - %H:%M:%S"'
+alias gitm='cd ~/git/myenv'
+alias gitw='cd ~/git/work'
+alias tos='cd ~/main/.trash && ls -a'
+alias tod='cd ~/main/other/notes && vim todo/head'
 
 export LANG=en_US.UTF8
 export EDITOR='/usr/bin/vim'
@@ -10,20 +14,6 @@ export EMAIL=mgrainmi@gmail.com
 _to_stderr()
 {
     >&2 echo "stderr: $1"
-}
-
-c-tos()
-{
-    if [ -d ~/main/.trash ]; then
-        cd ~/main/.trash; ls -a
-    fi
-}
-
-c-tod()
-{
-    if [ -d ~/main/other/notes/todo/ ]; then
-        cd ~/main; vim other/notes/todo/head
-    fi
 }
 
 # break reminder
