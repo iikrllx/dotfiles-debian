@@ -4,11 +4,7 @@ old-school fonts, etc. There are not only dotfiles here, but also some normal fi
 
 I'm lazy, so there's a script [./init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 which configure my work environment automatically. Installs the necessary programs/packages, configures various
-development tools, hotkeys, desktop environment, home directory, etc. If you don't need Russian language in the interface,
-run the following command after running the script ```init.sh```.
-```
-$ echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
-```
+development tools, hotkeys, desktop environment, home directory, etc.
 
 I am using the latest stable version of Debian with Xfce. I like Xfce because there is nothing superfluous in it.
 
@@ -34,13 +30,90 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 - <strong>Version control system:</strong> ```Git```
 - <strong>Text-mode interface for git:</strong> ```Tig```
 
-- <strong>Additional packages:</strong> [./init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+- <strong>Additional packages:</strong> [./init.sh --packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
-## Installation
+## Configure environment
 ```
-$ ./init.sh
-$ sudo reboot
+$ ./init.sh --help
+Usage: init.sh [option]
+
+  [option]
+  --ftp                  ftp server configuration
+  --hosts                update /etc/hosts
+  --sysctl               update /etc/sysctl.conf
+  --packages             install packages
+  --home                 cleanup $HOME
+  --bashrc               ~/.bashrc extra rules
+  --bash-completion      enable bash completion
+  --locales              generate 'en_US' 'ru_RU' locales
+  --xfce                 xfce configurations
+  --mc                   midnight commander configuration
+  --tmux                 tmux configuration
+  --vim                  vim configuration with plugins
+  --mousepad             mousepad configuration
+  --gdb                  gdb configuration
+  --other                other operations
+  -h, --help             show this help and exit
 ```
+
+For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+[.bashrc](https://github.com/iikrllx/dotfiles-debian/blob/master/.bashrc)
+(bash read), [vim](https://github.com/iikrllx/dotfiles-debian/blob/master/.vimrc) and
+[tmux](https://github.com/iikrllx/dotfiles-debian/blob/master/.tmux.conf):
+```
+$ ./init.sh --bashrc --vim --tmux
+```
+
+## .bashrc
+Functions:
+
+```
+$ c-tm
+$ c-tmr
+```
+I use these functions as a timer with a signal.
+Remind yourself of something.
+
+---
+
+```
+$ c-cc
+```
+Clear the clipboard.
+
+---
+
+```
+$ c-rnd-0
+$ c-rnd-1
+```
+Generate random symbols.<br/>
+c-rnd-0 (12 a-z0-9 symbols to clipboard)<br/>
+c-rnd-1 (28 a-zA-Z0-9 symbols to stdout)<br/>
+
+---
+
+```
+$ c-rename
+```
+Renames all files to random names in current directory. For example:
+```
+$ ls
+a.txt  b.txt  my-secrets.txt  secret.txt
+
+$ c-rename "txt"
+$ ls
+1z2otasm1idc.txt  7ixi4wocijea.txt  ttowy8plqm2y.txt  x74gy8x7si42.txt
+```
+
+---
+
+```
+c-deb-clean
+```
+I like use this function for clean 'rc' packages, debs autoremove and autoclean.
+
+---
 
 ## The best old-school fonts in my opinion
 ```
