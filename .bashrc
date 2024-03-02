@@ -74,7 +74,8 @@ c-rnd-1()
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 28 && echo
 }
 
-# renames multiple files to random names
+# renames all files to random names in current directory
+# need to specify the file format ("txt", "jpg", etc.)
 c-rename()
 {
     if [ ! -z $1 ]; then
@@ -93,14 +94,13 @@ c-rename()
 }
 
 # remove rc (removed but not purged) packages
-c-rm-rc()
+# plus debs autoremove and autoclean
+c-deb-clean()
 {
     rc_packs=$(dpkg -l | grep '^rc' | awk '{print $2}')
-    for p in ${rc_packs[*]}; do
-        sudo apt-get purge -y $p
-        sudo apt-get autoremove -y
-        sudo apt-get autoclean
-    done
+    for p in ${rc_packs[*]}; do sudo apt-get purge -y $p; done
+    sudo apt-get autoremove -y
+    sudo apt-get autoclean
 }
 
 # .bash_history
