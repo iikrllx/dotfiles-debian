@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This main project script configures my Debian environment (dotfiles).
+# This main project script which configure my Debian environment (dotfiles).
 # Configures the necessary tools for development and convenience.
 # Minimalistic environment and instruments with old-school fonts.
 #
