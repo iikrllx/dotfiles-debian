@@ -109,9 +109,17 @@ $ ls
 ---
 
 ```
-c-deb-clean
+$ c-deb-clean
 ```
 I like use this function for clean 'rc' packages, debs autoremove and autoclean.
+
+---
+
+```
+$ c-sd
+$ c-rb
+```
+Shutdown and reboot.
 
 ---
 
