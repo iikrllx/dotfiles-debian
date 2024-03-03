@@ -103,6 +103,16 @@ c-deb-clean()
     sudo apt-get autoclean
 }
 
+c-sd()
+{
+    sudo shutdown -h now
+}
+
+c-rb()
+{
+    sudo reboot
+}
+
 # .bash_history
 HISTSIZE=8000
 HISTFILESIZE=$HISTSIZE
