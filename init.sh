@@ -58,10 +58,11 @@ Usage: $(basename $0) [option]
 
   [option]
   --ftp                  ftp server configuration
-  --hosts                update /etc/hosts
-  --sysctl               update /etc/sysctl.conf
+  --hosts                modify hosts
+  --sysctl               modify kernel parameters
+  --initd                init.d script for user home directory
   --packages             install packages
-  --home                 cleanup $HOME
+  --clean-home           cleanup home directory
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
@@ -100,16 +101,25 @@ for arg in "$@"; do
 		;;
 
                 "--hosts")
-			bold_message "Update /etc/hosts"
+			bold_message "Hosts"
 			sudo cp ./etc/hosts /etc/hosts
 			sudo sed -i "s/<MY-HOSTNAME>/$(hostname)/" /etc/hosts &>/dev/null
 		;;
 
                 "--sysctl")
-			bold_message "Update /etc/sysctl.conf"
+			bold_message "Modify kernel parameters"
 			sudo cp ./etc/sysctl.conf /etc/sysctl.conf
 			sudo sysctl -p
 			echo "Core file size: $(ulimit -c)"
+		;;
+
+		"--initd")
+			bold_message "init.d script for user home directory"
+			sudo cp ./etc/init.d/clean-env /etc/init.d
+			sudo ln -s /etc/init.d/clean-env /etc/rc5.d/S00clean-env &>/dev/null | true
+			sudo ln -s /etc/init.d/clean-env /etc/rc6.d/K00clean-env &>/dev/null | true
+			sudo systemctl daemon-reload
+			sudo systemctl restart clean-env.service
 		;;
 
 		"--packages")
@@ -149,7 +159,7 @@ for arg in "$@"; do
 			sudo apt-file update
 		;;
 
-		"--home")
+		"--clean-home")
 			bold_message "Cleanup $HOME"
 
 			trash_dirs=(Видео Музыка Общедоступные Шаблоны Документы \
@@ -277,14 +287,9 @@ for arg in "$@"; do
 		"--other")
 			bold_message "Other"
 
-			if [ -d ~/.ssh ]; then
-				chmod 700 ~/.ssh
-				chmod 600 ~/.ssh/*
-			fi
-
 			cp ./.gitconfig ~/
-			chmod 700 ~/.local
 
+			chmod 700 ~/.local
 			mkdir ~/.local/bin &>/dev/null | true
 			chmod 755 ~/.local/bin
 			cp .local/bin/* ~/.local/bin
