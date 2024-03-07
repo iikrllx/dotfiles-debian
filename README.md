@@ -39,10 +39,11 @@ Usage: init.sh [option]
 
   [option]
   --ftp                  ftp server configuration
-  --hosts                update /etc/hosts
-  --sysctl               update /etc/sysctl.conf
+  --hosts                modify hosts
+  --sysctl               modify kernel parameters
+  --initd                init.d script for user home directory
   --packages             install packages
-  --home                 cleanup $HOME
+  --clean-home           cleanup home directory
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
