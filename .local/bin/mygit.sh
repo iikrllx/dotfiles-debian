@@ -78,7 +78,7 @@ case $1 in
 			fi
 		done
 
-		public_projects=(binout chroot-deb-builder dotfiles-debian glibc-with-shred typp)
+		public_projects=(binout chroot-deb-builder dotfiles-debian notes glibc-with-shred typp)
 		for name in ${public_projects[*]}; do
 			if [ ! -d $name ]; then
 				git clone git@github.com:iikrllx/$name
