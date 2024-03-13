@@ -124,6 +124,14 @@ Shutdown and reboot.
 
 ---
 
+## Scripts
+[mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
+this script manage all my git projects (simple git operations).<br/>
+[crypt.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
+this script encrypt/decrypt file with sensitive information (using a password).<br/>
+[skeleton.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skeleton.sh) -
+prepare the skeleton of the C source code.<br/>
+
 ## The best old-school fonts in my opinion
 ```
 glass tty vt220 bold
