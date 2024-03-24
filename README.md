@@ -65,6 +65,18 @@ For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/
 $ ./init.sh --bashrc --vim --tmux
 ```
 
+## Test all environment
+On a clean Debian virtual machine:
+
+```
+$ git clone https://github.com/iikrllx/dotfiles-debian.git
+$ cd dotfiles-debian
+$ ./init.sh --packages --initd --clean-home --bashrc --bash-completion --xfce \
+            --mc --tmux --vim --mousepad --gdb --other
+$ reboot
+```
+Enjoy.
+
 ## .bashrc
 Functions:
 
@@ -128,7 +140,7 @@ Shutdown and reboot.
 [mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
 this script manage all my git projects (simple git operations).<br/>
 [crypt.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
-this script encrypt/decrypt file with sensitive information (using a password).<br/>
+this script encrypt/decrypt regular file with sensitive information (using a password).<br/>
 [skeleton.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skeleton.sh) -
 prepare the skeleton of the C source code.<br/>
 
