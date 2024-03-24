@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script encrypt/decrypt file with sensitive information (using a password).
+# This script encrypt/decrypt regular file with sensitive information (using a password).
 #
 
 usage()

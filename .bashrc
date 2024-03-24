@@ -5,11 +5,13 @@ alias _date='date +"%d/%m/%Y - %H:%M:%S"'
 alias gm='cd ~/git/myenv'
 alias gw='cd ~/git/work'
 alias mn='cd ~/git/myenv/notes && vim -c NERDTree'
+alias m='cd ~/main && vim -c NERDTree'
 alias tos='cd ~/main/.trash && ls -a'
 alias tod='cd ~/main/my && vim todo/head'
 
 export LANG=en_US.UTF8
 export EDITOR='/usr/bin/vim'
+export BROWSER='/usr/bin/firefox'
 export EMAIL=mgrainmi@gmail.com
 
 _to_stderr()
@@ -135,6 +137,34 @@ history()
 
 PROMPT_COMMAND=_bash_history_sync
 
+# color man pages
+man()
+{
+    LESS_TERMCAP_mb=$'\e[0;91m'
+    LESS_TERMCAP_md=$'\e[0;91m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[07m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[0;4;32m' \
+    command man "$@"
+}
+
+# prompt variable
+# good ideas: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#afowler
+PS1='\[\e[0;33m\]\A|\[\e[0;32m\]\h:\[\e[0;36m\]\w \[\033[0;34m\]\u\[\e[0m\] \$ '
+
+# set 077 umask for the user
+# files -> 600 (rw-------)
+# directories -> 700 (rwx------)
+# for all users need change /etc/profile
+# https://wintelguy.com/umask-calc.pl
+(( $(umask) != 077 )) && umask 077
+
+# message
 echo "don't forget to turn on 'c-tm' save your eyes (break reminder)"
 
-[ -z $TMUX ] && tmux
+# start the terminal multiplexer
+if command -v tmux >/dev/null; then
+    [ -z $TMUX ] && tmux
+fi
