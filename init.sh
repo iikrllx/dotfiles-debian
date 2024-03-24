@@ -18,11 +18,6 @@ check_package()
 	dpkg -l | awk '{print $2}' | grep ^$1$ &>/dev/null && return 0 || return 1
 }
 
-if ! check_package eatmydata; then
-	>&2 echo "Please, install 'eatmydata' package"
-	exit 1
-fi
-
 # ----------------------------------
 
 mark_start="# ----"
@@ -146,6 +141,11 @@ for arg in "$@"; do
 			bold_message "Install useful packages"
 			sudo apt-get update
 
+			if ! check_package eatmydata; then
+				>&2 echo "Please, install 'eatmydata' package"
+				exit 1
+			fi
+
 			set +e
 			for p in ${packs[*]}; do
 				if ! check_package $p; then
@@ -170,7 +170,8 @@ for arg in "$@"; do
 				[ -d ~/$dir ] && rm -ri ~/$dir
 			done
 
-			[ ! -d ~/sources ] && mkdir ~/sources &>/dev/null | true
+			mkdir ~/sources &>/dev/null | true
+			chmod 700 ~/sources
 			ls ~
 		;;
 
@@ -287,13 +288,19 @@ for arg in "$@"; do
 		"--other")
 			bold_message "Other"
 
+			# git
 			cp ./.gitconfig ~/
 
+			# color setup for ls
+			cp ./.dircolors ~/
+
+			# scripts
 			chmod 700 ~/.local
 			mkdir ~/.local/bin &>/dev/null | true
-			chmod 755 ~/.local/bin
+			chmod 700 ~/.local/bin
 			cp .local/bin/* ~/.local/bin
 
+			# backgrounds
 			mkdir ~/.local/share &>/dev/null | true
 			chmod 700 ~/.local/share
 			cp -r .local/share/* ~/.local/share
