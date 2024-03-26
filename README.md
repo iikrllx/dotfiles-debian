@@ -47,7 +47,8 @@ Usage: init.sh [option]
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 xfce configurations
+  --xfce                 xfce configuration
+  --xfce4-terminal       xfce4-terminal configuration
   --mc                   midnight commander configuration
   --tmux                 tmux configuration
   --vim                  vim configuration with plugins
@@ -71,8 +72,8 @@ On a clean Debian virtual machine:
 ```
 $ git clone https://github.com/iikrllx/dotfiles-debian.git
 $ cd dotfiles-debian
-$ ./init.sh --packages --initd --clean-home --bashrc --bash-completion --xfce \
-            --mc --tmux --vim --mousepad --gdb --other
+$ ./init.sh --packages --initd --clean-home --bashrc --bash-completion --mc \
+            --xfce --xfce4-terminal --tmux --vim --mousepad --gdb --other
 $ reboot
 ```
 Enjoy.

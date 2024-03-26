@@ -6,6 +6,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'iberianpig/tig-explorer.vim'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -20,10 +21,14 @@ set hlsearch              " highlighting when doing a search (F3)
 set incsearch             " incrementally highlight matching
 set ignorecase            " ignore capital letters during search
 set noswapfile            " disable .swap files
-colorscheme slate         " select 'slate' colorscheme
-                          " visual mode change color highlight
+set background=dark       " dark or light
+colorscheme slate         " list all vim color schemes :colorscheme <Tab>
+
+" visual mode change color highlight
 highlight Visual cterm=bold ctermbg=Gray ctermfg=NONE
-let NERDTreeShowHidden=1  " show hidden files (nerdtree plugin)
+
+" show hidden files (nerdtree plugin)
+let NERDTreeShowHidden=1
 
 map <C-n> :NERDTreeToggle<CR>
 map <F3> :set hlsearch!<CR>
