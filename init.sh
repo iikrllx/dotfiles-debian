@@ -61,7 +61,8 @@ Usage: $(basename $0) [option]
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 xfce configurations
+  --xfce                 xfce configuration
+  --xfce4-terminal       xfce4-terminal configuration
   --mc                   midnight commander configuration
   --tmux                 tmux configuration
   --vim                  vim configuration with plugins
@@ -211,22 +212,29 @@ for arg in "$@"; do
 			# XDG_DATA_DIRS not set in ssh session
 			#if echo "$XDG_DATA_DIRS" | grep 'xfce' &>/dev/null; then
 
+			bold_message "XFCE configuration"
+
 			if check_package xfce4-session; then
-				bold_message "Xfce configuration"
 				cp ./.config/xfce4/xfconf/xfce-perchannel-xml/* \
 				~/.config/xfce4/xfconf/xfce-perchannel-xml
-
-				bold_message "xfce4-terminal configuration"
-				if check_package xfce4-terminal; then
-					mkdir ~/.config/xfce4/terminal &>/dev/null | true
-					chmod 700 ~/.config/xfce4/terminal
-					cp ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
-				else
-					>&2 echo "Please, install 'xfce4-terminal' package"
-					exit 1
-				fi
 			else
 				>&2 echo "Current desktop environment not 'xfce'"
+				exit 1
+			fi
+		;;
+
+		"--xfce4-terminal")
+			bold_message "xfce4-terminal configuration"
+
+			if check_package xfce4-terminal; then
+				mkdir ~/.config/xfce4/terminal &>/dev/null | true
+				chmod 700 ~/.config/xfce4/terminal
+				cp ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
+
+				mkdir -p ~/.local/share/xfce4/terminal/colorschemes &>/dev/null | true
+				cp ./.local/share/xfce4/terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
+			else
+				>&2 echo "Please, install 'xfce4-terminal' package"
 				exit 1
 			fi
 		;;
