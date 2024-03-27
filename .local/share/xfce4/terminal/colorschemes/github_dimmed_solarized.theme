@@ -1,0 +1,9 @@
+[Scheme]
+Name=GitHub Dimmed (Solarized)
+ColorCursor=#909dab
+ColorForeground=#768390
+ColorBackground=#002B36
+TabActivityColor=#A51D2D
+ColorPalette=#545d68;#f47067;#57ab5a;#c69026;#539bf5;#b083f0;#39c5cf;#909dab;#636e7b;#ff938a;#6bc46d;#daaa3f;#6cb6ff;#dcbdfb;#56d4dd;#cdd9e5
+ColorBold=#D8DEE9
+ColorBoldUseDefault=FALSE
