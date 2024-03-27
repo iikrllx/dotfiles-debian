@@ -146,6 +146,14 @@ Shutdown and reboot.
 
 ---
 
+```
+$ c-vb
+```
+Vim open ~/vbuf file.<br/>
+This file has saved lines from the clipboard.<br/>
+
+---
+
 ## Scripts
 [mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
 this script manage all my git projects (simple git operations).<br/>

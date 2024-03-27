@@ -116,6 +116,14 @@ c-rb()
     sudo reboot
 }
 
+# function for my .vimrc trick (vnoremap)
+# (vim -> visual mode -> ctrl + c -> ~/vbuf)
+# vbuf file has saved lines from the clipboard
+c-vb()
+{
+    [ -s ~/vbuf ] && vim ~/vbuf || echo $?
+}
+
 # .bash_history
 HISTSIZE=8000
 HISTFILESIZE=$HISTSIZE
