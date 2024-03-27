@@ -1,6 +1,6 @@
 # dotfiles-debian
 This is my Debian dotfiles (backup). Configuration files, useful scripts and aliases for my work, backgrounds,
-old-school fonts, etc. There are not only dotfiles here, but also some normal files that can be in ```/etc```.
+notes, color schemes, etc. There are not only dotfiles here, but also some normal files that can be in ```/etc```.
 
 I'm lazy, so there's a script [./init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 which configure my work environment automatically. Installs the necessary programs/packages, configures various
@@ -8,21 +8,30 @@ development tools, hotkeys, desktop environment, home directory, etc.
 
 I am using the latest stable version of Debian with Xfce. I like Xfce because there is nothing superfluous in it.
 
-![screenshot](./.local/share/example-b.png)
 ![screenshot](./.local/share/example-a.png)
+![screenshot](./.local/share/example-b.png)
+
+## Table of Contents
+- [Description of the environment](#description-of-the-environment)
+- [Configure environment script](#configure-environment-script)
+- [Test all environment](#test-all-environment)
+- [Bashrc](#bashrc)
+- [Scripts](#scripts)
+- [xfce4-terminal](#xfce4-terminal)
+- [The best old-school fonts in my opinion](#the-best-old-school-fonts-in-my-opinion)
+- [Mousepad](#mousepad)
 
 ## Description of the environment
 - <strong>OS:</strong> ```Debian```
 - <strong>DE:</strong> ```Xfce```
 - <strong>DM:</strong> ```LightDM```
+- <strong>WM:</strong> ```Xfwm4```
 - <strong>Shell:</strong> ```Bash```
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
 
 - <strong>Text:</strong> ```Vim, Mousepad, MC```
 - <strong>Terminal:</strong> ```xfce4-terminal, Tmux```
-- <strong>Terminal fonts:</strong> ```Terminus, Unifont, VT220, by IBM, Hack```
-- <strong>DE fonts:</strong> ```Sans (default fonts)```
 
 - <strong>Compiler:</strong> ```GCC```
 - <strong>Debuger:</strong> ```GDB Dashboard```
@@ -32,7 +41,7 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 
 - <strong>Additional packages:</strong> [./init.sh --packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
-## Configure environment
+## Configure environment script
 ```
 $ ./init.sh --help
 Usage: init.sh [option]
@@ -41,7 +50,7 @@ Usage: init.sh [option]
   --ftp                  ftp server configuration
   --hosts                modify hosts
   --sysctl               modify kernel parameters
-  --initd                init.d script for user home directory
+  --initd                init.d script (operations before shutdown/reboot)
   --packages             install packages
   --clean-home           cleanup home directory
   --bashrc               ~/.bashrc extra rules
@@ -78,7 +87,7 @@ $ reboot
 ```
 Enjoy.
 
-## .bashrc
+## Bashrc
 Functions:
 
 ```
@@ -86,7 +95,7 @@ $ c-tm
 $ c-tmr
 ```
 I use these functions as a timer with a signal.
-Remind yourself of something.
+Remind myself of something.
 
 ---
 
@@ -145,6 +154,18 @@ this script encrypt/decrypt regular file with sensitive information (using a pas
 [skeleton.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skeleton.sh) -
 prepare the skeleton of the C source code.<br/>
 
+## xfce4-terminal
+Copy files from project to user home directory.
+```
+$ ./init.sh --xfce4-terminal --other
+```
+
+Change terminal color scheme.
+![screenshot](./.local/share/terminal-a.png)
+![screenshot](./.local/share/terminal-b.png)
+![screenshot](./.local/share/terminal-c.png)
+![screenshot](./.local/share/terminal-d.png)
+
 ## The best old-school fonts in my opinion
 ```
 glass tty vt220 bold
@@ -153,8 +174,10 @@ px ibm ega9 regular
 px ibm mda regular
 px ibm vga8 regular
 px ibm vga9 regular
+terminus medium
 unifont regular
 unifont-jp regular
+hack regular
 ```
 
 ## Mousepad

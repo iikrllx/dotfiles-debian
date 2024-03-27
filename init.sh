@@ -55,7 +55,7 @@ Usage: $(basename $0) [option]
   --ftp                  ftp server configuration
   --hosts                modify hosts
   --sysctl               modify kernel parameters
-  --initd                init.d script for user home directory
+  --initd                init.d script (operations before shutdown/reboot)
   --packages             install packages
   --clean-home           cleanup home directory
   --bashrc               ~/.bashrc extra rules
@@ -205,7 +205,7 @@ for arg in "$@"; do
 			done
 
 			# all interface all users
-			echo LANG="ru_RU.UTF8" | sudo tee /etc/default/locale
+			echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
 		;;
 
 		"--xfce")
