@@ -128,7 +128,8 @@ for arg in "$@"; do
 			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig galculator gparted gcc make \
 			strace xsel ripgrep bash-completion pkg-config valgrind gpg locales sudo ssh sshpass \
 			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
-			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip)
+			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip \
+			audacious)
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
 
