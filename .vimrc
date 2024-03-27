@@ -45,6 +45,8 @@ nnoremap <Leader>b :TigBlame<CR>
 nnoremap <Leader>t :TigOpenProjectRootDir<CR>
 " Display or hide invisible characters
 nnoremap <Leader>q :set list! listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:↲,precedes:«,extends:»<CR>
+" Copy the current visual selection to the file (save these lines)
+vnoremap <C-c> :w !echo '' >> ~/vbuf && cat >> ~/vbuf<CR>:let @+ = getline('.')<CR><CR>
 
 " Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
