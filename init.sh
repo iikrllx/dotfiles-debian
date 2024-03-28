@@ -128,17 +128,16 @@ for arg in "$@"; do
 			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig galculator gparted gcc make \
 			strace xsel ripgrep bash-completion pkg-config valgrind gpg locales sudo ssh sshpass \
 			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
-			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip \
-			audacious)
+			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip)
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
 
 			deb=(apt-file dpkg-dev devscripts lintian cdbs debootstrap pbuilder dconf-cli automake \
 			autoconf dh-make debhelper build-essential autotools-dev)
 
-			env=(task-russian task-russian-desktop gnome-screensaver)
+			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop audacious)
 
-			packs=("${net[*]}" "${info[*]}" "${tools[*]}" "${fonts[*]}" "${deb[*]}" "${env[*]}")
+			packs=("${net[*]}" "${info[*]}" "${tools[*]}" "${fonts[*]}" "${deb[*]}" "${other[*]}")
 
 			bold_message "Install useful packages"
 			sudo apt-get update
@@ -275,6 +274,9 @@ for arg in "$@"; do
 		;;
 
 		"--mousepad")
+			# How export mousepad configuration ? Commands:
+			# $ dconf dump /org/xfce/mousepad/ > mousepad.settings
+			# $ dconf load /org/xfce/mousepad/ < mousepad.settings
 			bold_message "Mousepad configuration"
 			cp ./.config/dconf/mousepad.settings ~/.config/dconf
 			dconf load /org/xfce/mousepad/ < ~/.config/dconf/mousepad.settings
