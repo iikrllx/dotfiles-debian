@@ -18,8 +18,8 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 - [Bashrc](#bashrc)
 - [Scripts](#scripts)
 - [xfce4-terminal](#xfce4-terminal)
+- [Session shortcuts](#session-shortcuts)
 - [The best old-school fonts in my opinion](#the-best-old-school-fonts-in-my-opinion)
-- [Mousepad](#mousepad)
 
 ## Description of the environment
 - <strong>OS:</strong> ```Debian```
@@ -169,10 +169,18 @@ $ ./init.sh --xfce4-terminal --other
 ```
 
 Change terminal color scheme.
+
 ![screenshot](./.local/share/terminal-a.png)
 ![screenshot](./.local/share/terminal-b.png)
 ![screenshot](./.local/share/terminal-c.png)
 ![screenshot](./.local/share/terminal-d.png)
+
+## Session shortcuts
+```
+$ ./init.sh --xfce
+```
+
+![screenshot](./.local/share/hotkeys-a.png)
 
 ## The best old-school fonts in my opinion
 ```
@@ -186,11 +194,4 @@ terminus medium
 unifont regular
 unifont-jp regular
 hack regular
-```
-
-## Mousepad
-How export mousepad configuration ? Commands:
-```
-$ dconf dump /org/xfce/mousepad/ > mousepad.settings
-$ dconf load /org/xfce/mousepad/ < mousepad.settings
 ```
