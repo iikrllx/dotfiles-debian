@@ -1,0 +1,137 @@
+set realname = "Kirill Rekhov"
+set from = "krekhov.dev@mail.ru"
+
+set imap_pass = "password"
+set smtp_pass = "password"
+
+set imap_user = "krekhov.dev@mail.ru"
+set folder = "imaps://imap.mail.ru:993"
+set smtp_url = "smtp://krekhov.dev@smtp.mail.ru:587"
+
+set ssl_starttls
+set ssl_force_tls
+set smtp_authenticators = 'login'
+
+set spoolfile = "+INBOX"
+set trash = "+Корзина"
+set postponed = "+Черновики"
+set record = "+Отправленные"
+
+set sidebar_visible
+set sidebar_short_path
+set sidebar_width = 18
+set sidebar_delim_chars="/"
+set sidebar_indent_string='  '
+set sidebar_folder_indent
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+
+mailboxes +INBOX
+mailboxes +Отправленные
+mailboxes +Черновики
+mailboxes +Корзина
+mailboxes +Спам
+
+set mail_check = 4
+set editor = vim
+set imap_keepalive = 900
+
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+auto_view text/html text/calendar application/ics
+alternative_order text/html text/plain text/enriched text/*
+
+set askcc
+set delete
+set include
+set reply_to
+set use_from
+set fcc_attach
+set fast_reply
+set text_flowed
+set edit_headers
+set envelope_from
+set forward_quote
+set forward_decode
+set forward_format = "Fwd: %s"
+set attribution = "On %d, %n wrote:"
+
+unset help
+unset sig_dashes
+unset mime_forward
+
+#set status_on_top
+
+set quit
+set beep_new
+set pipe_decode
+set timeout = 0
+set thorough_search
+
+unset mark_old
+unset confirmappend
+
+set status_chars = " *%A"
+set date_format = "%d.%m.%Y %H:%M"
+set uncollapse_jump
+set sort = threads
+set sort_re
+set charset = "utf-8"
+set arrow_cursor = "no"
+set sort_aux = reverse-last-date-received
+set send_charset = "utf-8:iso-8859-1:us-ascii"
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+
+set pager_index_lines = 10
+set pager_context = 3
+set menu_scroll
+set pager_stop
+set tilde
+unset markers
+
+bind attach <return> view-mailcap
+bind attach l view-mailcap
+bind editor <space> noop
+bind pager c imap-fetch-mail
+bind index G last-entry
+bind index g noop
+bind index gg first-entry
+bind pager,attach h exit
+bind pager j next-line
+bind pager k previous-line
+bind pager l view-attachments
+bind index D delete-message
+bind index U undelete-message
+bind index L limit
+bind index h noop
+bind index l display-message
+bind browser h goto-parent
+bind browser l select-entry
+bind pager,browser gg top-page
+bind pager,browser G bottom-page
+bind index,pager,browser d half-down
+bind index,pager,browser u half-up
+bind editor <Tab> complete-query
+bind index,pager R group-reply
+bind index \031 previous-undeleted
+bind index \005 next-undeleted
+bind pager \031 previous-line
+bind pager \005 next-line
+
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+
+bind index,pager @ compose-to-sender
+bind index,pager D purge-message
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+
+bind editor ^T complete
+bind editor <Tab> complete-query

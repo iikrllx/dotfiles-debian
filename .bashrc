@@ -6,6 +6,7 @@ alias gm='cd ~/git/myenv'
 alias gw='cd ~/git/work'
 alias mn='cd ~/git/myenv/notes && vim -c NERDTree'
 alias m='cd ~/main && vim -c NERDTree'
+alias n='neomutt'
 alias tos='cd ~/main/.trash && ls -a'
 alias tod='cd ~/main/my && vim todo/head'
 

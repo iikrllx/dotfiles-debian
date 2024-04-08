@@ -119,25 +119,24 @@ for arg in "$@"; do
 		;;
 
 		"--packages")
-			net=(dnsutils traceroute whois tcpdump nmap wget curl netcat net-tools dirmngr \
-			ca-certificates nfs-common)
-
-			info=(info man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
-			linux-doc gcc-doc gcc-base-doc)
-
-			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig galculator gparted gcc make \
-			strace xsel ripgrep bash-completion pkg-config valgrind gpg locales sudo ssh sshpass \
+			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig neomutt galculator gparted gcc make \
+			strace xsel ripgrep bash-completion pkg-config valgrind locales sudo ssh sshpass \
 			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
-			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip)
-
-			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
+			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip \
+			ca-certificates openssl gpg dnsutils traceroute whois tcpdump nmap wget curl netcat \
+			net-tools dirmngr nfs-common)
 
 			deb=(apt-file dpkg-dev devscripts lintian cdbs debootstrap pbuilder dconf-cli automake \
 			autoconf dh-make debhelper build-essential autotools-dev)
 
+			doc=(info man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
+			linux-doc gcc-doc gcc-base-doc)
+
+			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
+
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop audacious)
 
-			packs=("${net[*]}" "${info[*]}" "${tools[*]}" "${fonts[*]}" "${deb[*]}" "${other[*]}")
+			packs=("${tools[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
 
 			bold_message "Install useful packages"
 			sudo apt-get update
