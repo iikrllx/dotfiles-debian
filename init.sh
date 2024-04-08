@@ -162,8 +162,8 @@ for arg in "$@"; do
 		"--clean-home")
 			bold_message "Cleanup $HOME"
 
-			trash_dirs=(Видео Музыка Общедоступные Шаблоны Документы \
-			Videos Music Public Templates Documents)
+			trash_dirs=(Видео Общедоступные Шаблоны Документы \
+			Videos Public Templates Documents)
 
 			# I don't need these dirs =)
 			for dir in ${trash_dirs[*]}; do
