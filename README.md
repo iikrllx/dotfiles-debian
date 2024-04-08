@@ -29,16 +29,13 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 - <strong>Shell:</strong> ```Bash```
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
-
 - <strong>Text:</strong> ```Vim, Mousepad, MC```
 - <strong>Terminal:</strong> ```xfce4-terminal, Tmux```
-
 - <strong>Compiler:</strong> ```GCC```
 - <strong>Debuger:</strong> ```GDB Dashboard```
-
 - <strong>Version control system:</strong> ```Git```
 - <strong>Text-mode interface for git:</strong> ```Tig```
-
+- <strong>Mail Client:</strong> ```neomutt```
 - <strong>Additional packages:</strong> [./init.sh --packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
 ## Configure environment script
