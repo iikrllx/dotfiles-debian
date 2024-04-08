@@ -13,6 +13,8 @@
 
 set -ex
 
+umask 077
+
 check_package()
 {
 	dpkg -l | awk '{print $2}' | grep ^$1$ &>/dev/null && return 0 || return 1
@@ -68,6 +70,7 @@ Usage: $(basename $0) [option]
   --vim                  vim configuration with plugins
   --mousepad             mousepad configuration
   --gdb                  gdb configuration
+  --neomutt              neomutt configuration
   --other                other operations
   -h, --help             show this help and exit
 
@@ -171,7 +174,6 @@ for arg in "$@"; do
 			done
 
 			mkdir ~/sources &>/dev/null | true
-			chmod 700 ~/sources
 			ls ~
 		;;
 
@@ -227,7 +229,6 @@ for arg in "$@"; do
 
 			if check_package xfce4-terminal; then
 				mkdir ~/.config/xfce4/terminal &>/dev/null | true
-				chmod 700 ~/.config/xfce4/terminal
 				cp ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
 
 				mkdir -p ~/.local/share/xfce4/terminal/colorschemes &>/dev/null | true
@@ -242,12 +243,7 @@ for arg in "$@"; do
 			bold_message "Midnight Commander configuration"
 
 			mkdir -p ~/.config/mc &>/dev/null | true
-			chmod 700 ~/.config
-			chmod 700 ~/.config/mc
-
 			sudo mkdir -p /root/.config/mc &>/dev/null | true
-			sudo chmod 700 /root/.config
-			sudo chmod 700 /root/.config/mc
 
 			cp ./.config/mc/{ini,panels.ini,hotlist} ~/.config/mc
 			sudo cp ./.config/mc/{ini,panels.ini} /root/.config/mc
@@ -295,24 +291,24 @@ for arg in "$@"; do
 			mark_e_file ~/.gdbinit
 		;;
 
+		"--neomutt")
+			mkdir -p ~/.config/neomutt/colorschemes &>/dev/null | true
+			cp -r ./.config/neomutt/colorschemes ~/.config/neomutt/colorschemes
+			cp ./.neomuttrc ~/
+		;;
+
 		"--other")
 			bold_message "Other"
 
-			# git
 			cp ./.gitconfig ~/
-
-			# color setup for ls
 			cp ./.dircolors ~/
+			cp ./.config/user-dirs.dirs ~/.config
+			cp ./.config/user-dirs.locale ~/.config
 
-			# scripts
-			chmod 700 ~/.local
 			mkdir ~/.local/bin &>/dev/null | true
-			chmod 700 ~/.local/bin
 			cp .local/bin/* ~/.local/bin
 
-			# backgrounds
 			mkdir ~/.local/share &>/dev/null | true
-			chmod 700 ~/.local/share
 			cp -r .local/share/* ~/.local/share
 		;;
 
