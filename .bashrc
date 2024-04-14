@@ -13,7 +13,7 @@ alias tod='cd ~/main/my && vim todo/head'
 export LANG=en_US.UTF8
 export EDITOR='/usr/bin/vim'
 export BROWSER='/usr/bin/firefox'
-export EMAIL=mgrainmi@gmail.com
+export EMAIL=krekhov.dev@mail.ru
 
 _to_stderr()
 {
