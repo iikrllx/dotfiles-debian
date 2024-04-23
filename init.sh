@@ -63,14 +63,16 @@ Usage: $(basename $0) [option]
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 xfce configuration
-  --xfce4-terminal       xfce4-terminal configuration
+  --xfce                 full xfce configuration
+  --xfce-hotkeys         xfce keyboard shortcuts
+  --xfce-terminal        xfce terminal emulator configuration
   --mc                   midnight commander configuration
   --tmux                 tmux configuration
   --vim                  vim configuration with plugins
   --mousepad             mousepad configuration
   --gdb                  gdb configuration
   --neomutt              neomutt configuration
+  --sources.list         /etc/apt/sources.list
   --other                other operations
   -h, --help             show this help and exit
 
@@ -215,7 +217,7 @@ for arg in "$@"; do
 
 			bold_message "XFCE configuration"
 
-			if check_package xfce4-session; then
+			if check_package xfce4; then
 				cp ./.config/xfce4/xfconf/xfce-perchannel-xml/* \
 				~/.config/xfce4/xfconf/xfce-perchannel-xml
 			else
@@ -224,8 +226,19 @@ for arg in "$@"; do
 			fi
 		;;
 
-		"--xfce4-terminal")
-			bold_message "xfce4-terminal configuration"
+		"--xfce-hotkeys")
+			bold_message "XFCE keyboard shortcuts"
+			if check_package xfce4; then
+				cp ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+				~/.config/xfce4/xfconf/xfce-perchannel-xml
+			else
+				>&2 echo "Current desktop environment not 'xfce'"
+				exit 1
+			fi
+		;;
+
+		"--xfce-terminal")
+			bold_message "XFCE terminal emulator configuration"
 
 			if check_package xfce4-terminal; then
 				mkdir ~/.config/xfce4/terminal &>/dev/null | true
@@ -295,6 +308,10 @@ for arg in "$@"; do
 			mkdir -p ~/.config/neomutt/colorschemes &>/dev/null | true
 			cp -r ./.config/neomutt/colorschemes ~/.config/neomutt/colorschemes
 			cp ./.neomuttrc ~/
+		;;
+
+		"--sources.list")
+			sudo cp ./etc/apt/sources.list /etc/apt/
 		;;
 
 		"--other")

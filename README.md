@@ -30,7 +30,7 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
 - <strong>Text:</strong> ```Vim, Mousepad, MC```
-- <strong>Terminal:</strong> ```xfce4-terminal, Tmux```
+- <strong>Terminal Emulator:</strong> ```xfce4-terminal, Tmux```
 - <strong>Compiler:</strong> ```GCC```
 - <strong>Debuger:</strong> ```GDB Dashboard```
 - <strong>Version control system:</strong> ```Git```
@@ -53,13 +53,16 @@ Usage: init.sh [option]
   --bashrc               ~/.bashrc extra rules
   --bash-completion      enable bash completion
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 xfce configuration
-  --xfce4-terminal       xfce4-terminal configuration
+  --xfce                 full xfce configuration
+  --xfce-hotkeys         xfce keyboard shortcuts
+  --xfce-terminal        xfce terminal emulator configuration
   --mc                   midnight commander configuration
   --tmux                 tmux configuration
   --vim                  vim configuration with plugins
   --mousepad             mousepad configuration
   --gdb                  gdb configuration
+  --neomutt              neomutt configuration
+  --sources.list         /etc/apt/sources.list
   --other                other operations
   -h, --help             show this help and exit
 ```
@@ -79,7 +82,7 @@ On a clean Debian virtual machine:
 $ git clone https://github.com/iikrllx/dotfiles-debian.git
 $ cd dotfiles-debian
 $ ./init.sh --packages --initd --clean-home --bashrc --bash-completion --mc \
-            --xfce --xfce4-terminal --tmux --vim --mousepad --gdb --other
+            --xfce --xfce-terminal --tmux --vim --mousepad --gdb --other
 $ reboot
 ```
 Enjoy.
@@ -116,7 +119,7 @@ c-rnd-1 (28 a-zA-Z0-9 symbols to stdout)<br/>
 ```
 $ c-rename
 ```
-Renames all files to random names in current directory. For example:
+Renames all files to random names in the current directory. For example:
 ```
 $ ls
 a.txt  b.txt  my-secrets.txt  secret.txt
@@ -151,6 +154,13 @@ This file has saved lines from the clipboard.<br/>
 
 ---
 
+```
+$ c-date
+```
+Date to clipboard.
+
+---
+
 ## Scripts
 [mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
 this script manage all my git projects (simple git operations).<br/>
@@ -162,7 +172,7 @@ prepare the skeleton of the C source code.<br/>
 ## xfce4-terminal
 Copy files from project to user home directory.
 ```
-$ ./init.sh --xfce4-terminal --other
+$ ./init.sh --xfce-terminal --other
 ```
 
 Change terminal color scheme.

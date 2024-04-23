@@ -16,9 +16,9 @@ cat << EOF
 $(echo -e "\e[96mUsage: $(basename $0) [options]\e[0m")
 Multiple Git Control (simple git operations)
 
-  --clone         clone my projects in current directory
-  --pull          pull from my projects. all branches
-  --status        status from my projects. current branch
+  clone         clone my projects in current directory
+  pull          pull from my projects. all branches
+  status        status from my projects. current branch
 
 EOF
 
@@ -27,40 +27,42 @@ exit
 
 git_action()
 {
-	path=$1 str=$2 opt=$3
+	path=$1 option=$2
 
 	current_dirs=$(dirname $(find $path -type d -name '.git'))
 	for dir in ${current_dirs[*]}; do
-		echo -e "\e[96m*** ----- $str '$dir' ----- ***\e[0m"
+		echo -e "\e[96m*** ----- '$dir' ----- ***\e[0m"
 		cd $dir
 
-		if [ "$str" == "Pull" ]; then
+		if [ "$option" == "pull" ]; then
 			git fetch --all
-			git pull --all 2>/dev/null
+			if git status | grep 'git pull' >/dev/null; then
+				echo "git pull --all"
+				git pull --all 2>/dev/null
+			fi
 
-			# grep asterisk
 			current_branch=$(git branch | grep '*' | awk '{print $2}')
-
 			branch_count=$(git branch | wc -l)
-			if (( $branch_count > 1 )); then
 
+			if (( $branch_count > 1 )); then
 				# git pull from all have branches
 				# I want actual git log
 				branches=$(git branch --format='%(refname:short)')
 				for b in ${branches[*]}; do
-					echo "git pull: $b"
 					git checkout $b
-					git $opt 2>/dev/null
+					if git status | grep 'git pull' >/dev/null; then
+						echo "git pull: $b"
+						git $option 2>/dev/null
+					fi
 				done
 
-				# go back to the previous branch
+				# go back to the 'master' branch
 				git checkout $current_branch
-			else
-				echo "git pull: $current_branch"
-				git $opt 2>/dev/null
 			fi
-		else
-			git $opt
+		fi
+
+		if [ "$option" == "status" ]; then
+			git $option
 		fi
 
 		cd - >/dev/null
@@ -69,7 +71,7 @@ git_action()
 }
 
 case $1 in
-	'--clone')
+	'clone')
 		private_projects=$(ssh rserver-git 'ls projects')
 		for name in ${private_projects[*]}; do
 			if [ ! -d $name ]; then
@@ -87,8 +89,8 @@ case $1 in
 		done
 	;;
 
-	'--pull') git_action $myenv "Pull" "pull" ;;
-	'--status') git_action $myenv "Status" "status" ;;
+	'pull') git_action $myenv "pull" ;;
+	'status') git_action $myenv "status" ;;
 
 	*) usage ;;
 esac
