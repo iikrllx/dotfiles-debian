@@ -125,6 +125,15 @@ c-vb()
     [ -s ~/vbuf ] && vim ~/vbuf || echo $?
 }
 
+c-date()
+{
+    if command -v xsel >/dev/null; then
+        date | xsel -b -i
+    else
+        _to_stderr "command 'xsel' not found"
+    fi
+}
+
 # .bash_history
 HISTSIZE=8000
 HISTFILESIZE=$HISTSIZE

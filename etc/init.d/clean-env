@@ -17,6 +17,7 @@ case "$1" in
 	stop)
 		dotfiles=(.bash_history .gdb_history .lesshst .tig_history .viminfo .wget-hsts)
 		main_user=/home/`getent passwd 1000 | cut -d ':' -f1`
+
 		for f in ${dotfiles[*]}; do
 			for u in /root $main_user; do
 				if [ -e "$u/$f" ]; then
@@ -29,6 +30,7 @@ case "$1" in
 			chmod 700 $main_user/.ssh
 			chmod 600 $main_user/.ssh/*
 		fi
+
 		exit 0
 	;;
 esac
