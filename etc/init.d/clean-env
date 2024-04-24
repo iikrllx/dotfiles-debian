@@ -5,7 +5,7 @@
 # Required-Stop: $local_fs
 # Default-Start: 5
 # Default-Stop: 0 6
-# Short-Description: Commands for user home directory
+# Short-Description: Commands for user home directory (amnesia)
 # Description: Operations before shutdown/reboot
 ### END INIT INFO
 
