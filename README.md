@@ -1,24 +1,35 @@
+<div>
+<a href="https://github.com/iikrllx/dotfiles-debian">
+    <img src="https://img.shields.io/badge/debian-%23CE0056?style=flat&logo=Debian&logoColor=%23CE0056&label=dotfiles&labelColor=white">
+</a>
+<a href="https://github.com/iikrllx/dotfiles-debian/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/GPLv3-green?style=flat&label=License&labelColor=blue">
+</a>
+</div>
+
 # dotfiles-debian
+
 This is my Debian dotfiles (backup). Configuration files, useful scripts and aliases for my work, backgrounds,
 notes, color schemes, etc. There are not only dotfiles here, but also some normal files that can be in ```/etc```.
 
 I'm lazy, so there's a script [./init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
-which configure my work environment automatically. Installs the necessary programs/packages, configures various
-development tools, hotkeys, desktop environment, home directory, etc.
+which configure/install my work environment automatically. Installs the necessary programs/packages, configures various
+development tools, hotkeys, desktop environment, home directory, etc. I am using the latest stable version
+of Debian with Xfce. I like Xfce because there is nothing superfluous in it.
 
-I am using the latest stable version of Debian with Xfce. I like Xfce because there is nothing superfluous in it.
+Xfce Desktop:
+![screenshot](./images/example-a.png)
+Terminal Emulator with Tmux:
+![screenshot](./images/example-b.png)
 
-![screenshot](./.local/share/example-a.png)
-![screenshot](./.local/share/example-b.png)
-
-## Table of Contents
+## Table of contents
 - [Description of the environment](#description-of-the-environment)
-- [Configure environment script](#configure-environment-script)
 - [Test all environment](#test-all-environment)
+- [Install the environment using a script](#install-the-environment-using-a-script)
 - [Bashrc](#bashrc)
 - [Scripts](#scripts)
 - [xfce4-terminal](#xfce4-terminal)
-- [Session shortcuts](#session-shortcuts)
+- [Application shortcuts](#application-shortcuts)
 - [The best old-school fonts in my opinion](#the-best-old-school-fonts-in-my-opinion)
 
 ## Description of the environment
@@ -29,42 +40,97 @@ I am using the latest stable version of Debian with Xfce. I like Xfce because th
 - <strong>Shell:</strong> ```Bash```
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
-- <strong>Text:</strong> ```Vim, Mousepad, MC```
-- <strong>Terminal Emulator:</strong> ```xfce4-terminal, Tmux```
+- <strong>Text Editor:</strong> ```Vim```, ```Mousepad```
+- <strong>Terminal File Navigation:</strong> ```MC```
+- <strong>Terminal Emulator:</strong> ```xfce4-terminal```
+- <strong>Terminal Multiplexer:</strong> ```Tmux```
 - <strong>Compiler:</strong> ```GCC```
 - <strong>Debuger:</strong> ```GDB Dashboard```
 - <strong>Version control system:</strong> ```Git```
 - <strong>Text-mode interface for git:</strong> ```Tig```
 - <strong>Mail Client:</strong> ```neomutt```
-- <strong>Additional packages:</strong> [./init.sh --packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+- <strong>Additional packages:</strong> [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
-## Configure environment script
+## Test all environment
+On a clean Debian virtual machine:
+
+```
+$ git clone https://github.com/iikrllx/dotfiles-debian.git
+$ cd dotfiles-debian
+$ ./init.sh --initd --sources.list --install-packages --clean-home --bashrc --bash-completion \
+            --xfce --xfce-terminal --mc --tmux --vim --mousepad --gdb --neomutt --dircolors \
+            --local-bin --local-share
+$ reboot
+```
+Enjoy.
+
+## Install the environment using a script
+Synopsis:
 ```
 $ ./init.sh --help
 Usage: init.sh [option]
 
   [option]
-  --ftp                  ftp server configuration
-  --hosts                modify hosts
-  --sysctl               modify kernel parameters
-  --initd                init.d script (operations before shutdown/reboot)
-  --packages             install packages
+  --ftp                  ftp server installation
+                         /etc/vsftpd.conf
+
+  --initd                operations before shutdown/reboot
+                         /etc/init.d/clean-env script - amnesia
+
+  --hosts                hosts installation
+                         /etc/hosts
+
+  --sysctl               kernel parameters installation
+                         /etc/sysctl.conf
+
+  --sources.list         the latest up-to-date Debian repositories
+                         sources.list installation
+
+
+  --install-packages     install useful packages
+
   --clean-home           cleanup home directory
-  --bashrc               ~/.bashrc extra rules
+                         configure user-dirs.*
+
+  --bashrc               ~/.bashrc extra rules installation
+                         append rules to the current content of ~/.bashrc
+
   --bash-completion      enable bash completion
+
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 full xfce configuration
-  --xfce-hotkeys         xfce keyboard shortcuts
-  --xfce-terminal        xfce terminal emulator configuration
-  --mc                   midnight commander configuration
-  --tmux                 tmux configuration
-  --vim                  vim configuration with plugins
-  --mousepad             mousepad configuration
-  --gdb                  gdb configuration
-  --neomutt              neomutt configuration
-  --sources.list         /etc/apt/sources.list
-  --other                other operations
+
+  --xfce                 full xfce installation (desktop session)
+                         all ~/.config/xfce4/xfconf/xfce-perchannel-xml files
+
+  --xfce-hotkeys         xfce keyboard shortcuts installation
+                         configure only 'xfce4-keyboard-shortcuts.xml'
+
+  --xfce-terminal        xfce terminal emulator installation (xfce4-terminal)
+                         ~/.config/xfce4/terminal/terminalrc + colorschemes
+
+
+  --mc                   midnight commander installation
+
+  --tmux                 terminal multiplexer installation
+
+  --vim                  vim text editor installation with plugins
+
+  --mousepad             mousepad text editor installation
+
+  --gdb                  gdb debugger installation
+
+  --neomutt              mail client neomutt installation
+
+  --dircolors            dircolors installation
+
+  --local-bin            ~/.local/bin installation
+
+  --local-share          ~/.local/share installation
+
+  --gitconfig            ~/.gitconfig installation
+
   -h, --help             show this help and exit
+
 ```
 
 For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
@@ -74,18 +140,6 @@ For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/
 ```
 $ ./init.sh --bashrc --vim --tmux
 ```
-
-## Test all environment
-On a clean Debian virtual machine:
-
-```
-$ git clone https://github.com/iikrllx/dotfiles-debian.git
-$ cd dotfiles-debian
-$ ./init.sh --packages --initd --clean-home --bashrc --bash-completion --mc \
-            --xfce --xfce-terminal --tmux --vim --mousepad --gdb --other
-$ reboot
-```
-Enjoy.
 
 ## Bashrc
 Functions:
@@ -170,26 +224,29 @@ this script encrypt/decrypt regular file with sensitive information (using a pas
 prepare the skeleton of the C source code.<br/>
 
 ## xfce4-terminal
-Copy files from project to user home directory.
+Installation Xfce Terminal Emulator configuration with colorschemes + dircolors.
 ```
-$ ./init.sh --xfce-terminal --other
-```
-
-Change terminal color scheme.
-
-![screenshot](./.local/share/terminal-a.png)
-![screenshot](./.local/share/terminal-b.png)
-![screenshot](./.local/share/terminal-c.png)
-![screenshot](./.local/share/terminal-d.png)
-
-## Session shortcuts
-```
-$ ./init.sh --xfce
+$ ./init.sh --xfce-terminal --dircolors
 ```
 
-![screenshot](./.local/share/hotkeys-a.png)
+Example of changing the terminal color scheme.
+
+![screenshot](./images/terminal-a.png)
+![screenshot](./images/terminal-b.png)
+![screenshot](./images/terminal-c.png)
+![screenshot](./images/terminal-d.png)
+
+## Application shortcuts
+```
+$ ./init.sh --xfce-hotkeys
+```
+
+![screenshot](./images/hotkeys-a.png)
 
 ## The best old-school fonts in my opinion
+I use these fonts from time to time.<br/>
+These fonts are installed using [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+
 ```
 glass tty vt220 bold
 px ibm ega8 regular
@@ -202,3 +259,14 @@ unifont regular
 unifont-jp regular
 hack regular
 ```
+
+Example of changing the font.
+
+![screenshot](./images/font-a.png)
+![screenshot](./images/font-b.png)
+![screenshot](./images/font-c.png)
+![screenshot](./images/font-d.png)
+
+## License
+This project is licensed under the GPLv3 License - see the
+[LICENSE](https://github.com/iikrllx/dotfiles-debian/blob/master/LICENSE) file for details.
