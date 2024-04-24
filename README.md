@@ -1,4 +1,5 @@
-<div>
+<div align="center">
+<img src="https://github.com/iikrllx/dotfiles-debian/blob/master/images/logo-no-background.svg">
 <a href="https://github.com/iikrllx/dotfiles-debian">
     <img src="https://img.shields.io/badge/debian-%23CE0056?style=flat&logo=Debian&logoColor=%23CE0056&label=dotfiles&labelColor=white">
 </a>
@@ -6,8 +7,6 @@
     <img src="https://img.shields.io/badge/GPLv3-green?style=flat&label=License&labelColor=blue">
 </a>
 </div>
-
-# dotfiles-debian
 
 This is my Debian dotfiles (backup). Configuration files, useful scripts and aliases for my work, backgrounds,
 notes, color schemes, etc. There are not only dotfiles here, but also some normal files that can be in ```/etc```.
