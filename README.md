@@ -64,74 +64,10 @@ $ reboot
 Enjoy.
 
 ## Install the environment using a script
-Synopsis:
+Usage information:
 ```
 $ ./init.sh --help
-Usage: init.sh [option]
-
-  [option]
-  --ftp                  ftp server installation
-                         /etc/vsftpd.conf
-
-  --initd                operations before shutdown/reboot
-                         /etc/init.d/clean-env script - amnesia
-
-  --hosts                hosts installation
-                         /etc/hosts
-
-  --sysctl               kernel parameters installation
-                         /etc/sysctl.conf
-
-  --sources.list         the latest up-to-date Debian repositories
-                         sources.list installation
-
-
-  --install-packages     install useful packages
-
-  --clean-home           cleanup home directory
-                         configure user-dirs.*
-
-  --bashrc               ~/.bashrc extra rules installation
-                         append rules to the current content of ~/.bashrc
-
-  --bash-completion      enable bash completion
-
-  --locales              generate 'en_US' 'ru_RU' locales
-
-  --xfce                 full xfce installation (desktop session)
-                         all ~/.config/xfce4/xfconf/xfce-perchannel-xml files
-
-  --xfce-hotkeys         xfce keyboard shortcuts installation
-                         configure only 'xfce4-keyboard-shortcuts.xml'
-
-  --xfce-terminal        xfce terminal emulator installation (xfce4-terminal)
-                         ~/.config/xfce4/terminal/terminalrc + colorschemes
-
-
-  --mc                   midnight commander installation
-
-  --tmux                 terminal multiplexer installation
-
-  --vim                  vim text editor installation with plugins
-
-  --mousepad             mousepad text editor installation
-
-  --gdb                  gdb debugger installation
-
-  --neomutt              mail client neomutt installation
-
-  --dircolors            dircolors installation
-
-  --local-bin            ~/.local/bin installation
-
-  --local-share          ~/.local/share installation
-
-  --gitconfig            ~/.gitconfig installation
-
-  -h, --help             show this help and exit
-
 ```
-
 For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 [.bashrc](https://github.com/iikrllx/dotfiles-debian/blob/master/.bashrc)
 (bash read), [vim](https://github.com/iikrllx/dotfiles-debian/blob/master/.vimrc) and
