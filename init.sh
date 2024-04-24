@@ -1,14 +1,17 @@
 #!/bin/bash
 #
-# This main project script which configure my Debian environment (dotfiles).
+# This main project script which configure/install my Debian environment (dotfiles).
 # Configures the necessary tools for development and convenience.
 # Minimalistic environment and instruments with old-school fonts.
 #
 # Be careful when running this script on your main machine,
 # it does not create backup dotfiles and may erase your current working environment.
 #
-# After the $ ./init.sh --xfce execution need to reboot.
-# $ sudo reboot
+# After the
+# $ ./init.sh --xfce
+# or
+# $ ./init.sh --xfce-hotkeys
+# need to session restart.
 #
 
 set -ex
@@ -54,26 +57,64 @@ cat << EOF
 Usage: $(basename $0) [option]
 
   [option]
-  --ftp                  ftp server configuration
-  --hosts                modify hosts
-  --sysctl               modify kernel parameters
-  --initd                init.d script (operations before shutdown/reboot)
-  --packages             install packages
+  --ftp                  ftp server installation
+                         /etc/vsftpd.conf
+
+  --initd                operations before shutdown/reboot
+                         /etc/init.d/clean-env script - amnesia
+
+  --hosts                hosts installation
+                         /etc/hosts
+
+  --sysctl               kernel parameters installation
+                         /etc/sysctl.conf
+
+  --sources.list         the latest up-to-date Debian repositories
+                         sources.list installation
+
+
+  --install-packages     install useful packages
+
   --clean-home           cleanup home directory
-  --bashrc               ~/.bashrc extra rules
+                         configure user-dirs.*
+
+  --bashrc               ~/.bashrc extra rules installation
+                         append rules to the current content of ~/.bashrc
+
   --bash-completion      enable bash completion
+
   --locales              generate 'en_US' 'ru_RU' locales
-  --xfce                 full xfce configuration
-  --xfce-hotkeys         xfce keyboard shortcuts
-  --xfce-terminal        xfce terminal emulator configuration
-  --mc                   midnight commander configuration
-  --tmux                 tmux configuration
-  --vim                  vim configuration with plugins
-  --mousepad             mousepad configuration
-  --gdb                  gdb configuration
-  --neomutt              neomutt configuration
-  --sources.list         /etc/apt/sources.list
-  --other                other operations
+
+  --xfce                 full xfce installation (desktop session)
+                         all ~/.config/xfce4/xfconf/xfce-perchannel-xml files
+
+  --xfce-hotkeys         xfce keyboard shortcuts installation
+                         configure only 'xfce4-keyboard-shortcuts.xml'
+
+  --xfce-terminal        xfce terminal emulator installation (xfce4-terminal)
+                         ~/.config/xfce4/terminal/terminalrc + colorschemes
+
+
+  --mc                   midnight commander installation
+
+  --tmux                 terminal multiplexer installation
+
+  --vim                  vim text editor installation with plugins
+
+  --mousepad             mousepad text editor installation
+
+  --gdb                  gdb debugger installation
+
+  --neomutt              mail client neomutt installation
+
+  --dircolors            dircolors installation
+
+  --local-bin            ~/.local/bin installation
+
+  --local-share          ~/.local/share installation
+
+  --gitconfig            ~/.gitconfig installation
+
   -h, --help             show this help and exit
 
 EOF
@@ -86,44 +127,49 @@ exit 0
 for arg in "$@"; do
         case "$arg" in
 		"--ftp")
-			bold_message "FTP server configuration"
+			bold_message "FTP server installation"
+			if check_package vsftpd; then
+				if [ ! -d /srv/ftp/upload ]; then
+					sudo mkdir /srv/ftp/upload
+					sudo chmod 777 /srv/ftp/upload
+				fi
 
-			if ! check_package vsftpd; then
-				sudo apt-get -y install vsftpd
+				sudo cp -v ./etc/vsftpd.conf /etc/vsftpd.conf
+				sudo systemctl restart vsftpd.service
+			else
+				>&2 echo "Please, install 'vsftpd' package"
+				exit 1
 			fi
-
-			if [ ! -d /srv/ftp/upload ]; then
-				sudo mkdir /srv/ftp/upload
-				sudo chmod 777 /srv/ftp/upload
-			fi
-
-			sudo cp ./etc/vsftpd.conf /etc/vsftpd.conf
-			sudo systemctl restart vsftpd.service
-		;;
-
-                "--hosts")
-			bold_message "Hosts"
-			sudo cp ./etc/hosts /etc/hosts
-			sudo sed -i "s/<MY-HOSTNAME>/$(hostname)/" /etc/hosts &>/dev/null
-		;;
-
-                "--sysctl")
-			bold_message "Modify kernel parameters"
-			sudo cp ./etc/sysctl.conf /etc/sysctl.conf
-			sudo sysctl -p
-			echo "Core file size: $(ulimit -c)"
 		;;
 
 		"--initd")
-			bold_message "init.d script for user home directory"
-			sudo cp ./etc/init.d/clean-env /etc/init.d
+			bold_message "init.d script for user home directory (amnesia)"
+			sudo cp -v ./etc/init.d/clean-env /etc/init.d
 			sudo ln -s /etc/init.d/clean-env /etc/rc5.d/S00clean-env &>/dev/null | true
 			sudo ln -s /etc/init.d/clean-env /etc/rc6.d/K00clean-env &>/dev/null | true
 			sudo systemctl daemon-reload
 			sudo systemctl restart clean-env.service
 		;;
 
-		"--packages")
+                "--hosts")
+			bold_message "Hosts installation"
+			sudo cp -v ./etc/hosts /etc/hosts
+			sudo sed -i "s/<MY-HOSTNAME>/$(hostname)/" /etc/hosts &>/dev/null
+		;;
+
+                "--sysctl")
+			bold_message "Kernel parameters installation"
+			sudo cp -v ./etc/sysctl.conf /etc/sysctl.conf
+			sudo sysctl -p
+			echo "Core file size: $(ulimit -c)"
+		;;
+
+		"--sources.list")
+			bold_message "sources.list installation"
+			sudo cp -v ./etc/apt/sources.list /etc/apt/
+		;;
+
+		"--install-packages")
 			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig neomutt galculator gparted gcc make \
 			strace xsel ripgrep bash-completion pkg-config valgrind locales sudo ssh sshpass \
 			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
@@ -177,10 +223,13 @@ for arg in "$@"; do
 
 			mkdir ~/sources &>/dev/null | true
 			ls ~
+
+			cp -v ./.config/user-dirs.dirs ~/.config
+			cp -v ./.config/user-dirs.locale ~/.config
 		;;
 
 		"--bashrc")
-			bold_message "~/.bashrc extra rules"
+			bold_message "~/.bashrc extra rules installation"
 			remove_marked_lines ~/.bashrc
 			mark_s_file ~/.bashrc
 			cat ./.bashrc >> ~/.bashrc
@@ -189,36 +238,44 @@ for arg in "$@"; do
 
 		"--bash-completion")
 			bold_message "Enable bash completion"
-			sudo perl -i -pe '$i++ if /^#if ! shopt -oq posix;/; s/^#// if $i==1; $i=0 if /^fi/' \
-			/etc/bash.bashrc
+			if check_package bash-completion; then
+				sudo perl -i -pe '$i++ if /^#if ! shopt -oq posix;/; s/^#// if $i==1; $i=0 if /^fi/' \
+				/etc/bash.bashrc
+			else
+				>&2 echo "Please, install 'bash-completion' package"
+				exit 1
+			fi
 		;;
 
 		"--locales")
 			bold_message "Generate locales"
+			if check_package locales; then
+				# for the shell, I use 'en_US.UTF-8'
+				# for the interface 'ru_RU.UTF-8'
+				# maybe something will change in the future
 
-			# for the shell, I use 'en_US.UTF-8'
-			# for the interface 'ru_RU.UTF-8'
-			# maybe something will change in the future
+				for loc in en_US.UTF-8 ru_RU.UTF-8; do
+					if ! grep ^$loc /etc/locale.gen &>/dev/null; then
+						echo "$loc UTF-8" | sudo tee -a /etc/locale.gen
+						sudo locale-gen
+					fi
+				done
 
-			for loc in en_US.UTF-8 ru_RU.UTF-8; do
-				if ! grep ^$loc /etc/locale.gen &>/dev/null; then
-					echo "$loc UTF-8" | sudo tee -a /etc/locale.gen
-					sudo locale-gen
-				fi
-			done
-
-			# all interface all users
-			echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
+				# all interface all users
+				echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
+			else
+				>&2 echo "Please, install 'locales' package"
+				exit 1
+			fi
 		;;
 
 		"--xfce")
 			# XDG_DATA_DIRS not set in ssh session
 			#if echo "$XDG_DATA_DIRS" | grep 'xfce' &>/dev/null; then
 
-			bold_message "XFCE configuration"
-
+			bold_message "XFCE installation"
 			if check_package xfce4; then
-				cp ./.config/xfce4/xfconf/xfce-perchannel-xml/* \
+				cp -v ./.config/xfce4/xfconf/xfce-perchannel-xml/* \
 				~/.config/xfce4/xfconf/xfce-perchannel-xml
 			else
 				>&2 echo "Current desktop environment not 'xfce'"
@@ -227,9 +284,9 @@ for arg in "$@"; do
 		;;
 
 		"--xfce-hotkeys")
-			bold_message "XFCE keyboard shortcuts"
+			bold_message "XFCE keyboard shortcuts installation"
 			if check_package xfce4; then
-				cp ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+				cp -v ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 				~/.config/xfce4/xfconf/xfce-perchannel-xml
 			else
 				>&2 echo "Current desktop environment not 'xfce'"
@@ -238,14 +295,13 @@ for arg in "$@"; do
 		;;
 
 		"--xfce-terminal")
-			bold_message "XFCE terminal emulator configuration"
-
+			bold_message "XFCE terminal emulator installation"
 			if check_package xfce4-terminal; then
 				mkdir ~/.config/xfce4/terminal &>/dev/null | true
-				cp ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
+				cp -v ./.config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal
 
 				mkdir -p ~/.local/share/xfce4/terminal/colorschemes &>/dev/null | true
-				cp ./.local/share/xfce4/terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
+				cp -v ./.local/share/xfce4/terminal/colorschemes/* ~/.local/share/xfce4/terminal/colorschemes
 			else
 				>&2 echo "Please, install 'xfce4-terminal' package"
 				exit 1
@@ -253,80 +309,116 @@ for arg in "$@"; do
 		;;
 
 		"--mc")
-			bold_message "Midnight Commander configuration"
+			bold_message "Midnight Commander installation"
+			if check_package mc; then
+				mkdir -p ~/.config/mc &>/dev/null | true
+				sudo mkdir -p /root/.config/mc &>/dev/null | true
 
-			mkdir -p ~/.config/mc &>/dev/null | true
-			sudo mkdir -p /root/.config/mc &>/dev/null | true
-
-			cp ./.config/mc/{ini,panels.ini,hotlist} ~/.config/mc
-			sudo cp ./.config/mc/{ini,panels.ini} /root/.config/mc
+				cp -v ./.config/mc/{ini,panels.ini,hotlist} ~/.config/mc
+				sudo cp -v ./.config/mc/{ini,panels.ini} /root/.config/mc
+			else
+				>&2 echo "Please, install 'mc' package"
+				exit 1
+			fi
 		;;
 
 		"--tmux")
-			bold_message "Tmux configuration"
-			cp ./.tmux.conf ~/.tmux.conf
+			bold_message "Tmux installation"
+			if check_package tmux; then
+				cp -v ./.tmux.conf ~/.tmux.conf
+			else
+				>&2 echo "Please, install 'tmux' package"
+				exit 1
+			fi
 		;;
 
 		"--vim")
-			bold_message "Vim configuration with plugins"
+			bold_message "Vim installation with plugins"
+			if check_package vim; then
+				plug_vim=~/.vim/autoload/plug.vim
 
-			plug_vim=~/.vim/autoload/plug.vim
+				if [ ! -e $plug_vim ]; then
+					curl -fLo $plug_vim --create-dirs \
+					https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				fi
 
-			if [ ! -e $plug_vim ]; then
-				curl -fLo $plug_vim --create-dirs \
-				https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				cp -v ./.vimrc ~/.vimrc
+				vim +PlugClean +PlugInstall +q +q
+			else
+				>&2 echo "Please, install 'vim' package"
+				exit 1
 			fi
-
-			cp ./.vimrc ~/.vimrc
-			vim +PlugClean +PlugInstall +q +q
 		;;
 
 		"--mousepad")
-			# How export mousepad configuration ? Commands:
-			# $ dconf dump /org/xfce/mousepad/ > mousepad.settings
-			# $ dconf load /org/xfce/mousepad/ < mousepad.settings
-			bold_message "Mousepad configuration"
-			cp ./.config/dconf/mousepad.settings ~/.config/dconf
-			dconf load /org/xfce/mousepad/ < ~/.config/dconf/mousepad.settings
+			bold_message "Mousepad installation"
+			if check_package mousepad; then
+				# How export mousepad configuration ? Commands:
+				# $ dconf dump /org/xfce/mousepad/ > mousepad.settings
+				# $ dconf load /org/xfce/mousepad/ < mousepad.settings
+				cp -v ./.config/dconf/mousepad.settings ~/.config/dconf
+				dconf load /org/xfce/mousepad/ < ~/.config/dconf/mousepad.settings
+			else
+				>&2 echo "Please, install 'mousepad' package"
+				exit 1
+			fi
 		;;
 
 		"--gdb")
-			bold_message "Gdb configuration"
+			bold_message "Gdb installation"
+			if check_package gdb; then
+				if [ ! -e ~/.gdbinit ]; then
+					wget -P ~/ https://git.io/.gdbinit
+					pip install pygments --break-system-packages
+				fi
 
-			if [ ! -e ~/.gdbinit ]; then
-				wget -P ~/ https://git.io/.gdbinit
-				pip install pygments --break-system-packages
+				remove_marked_lines ~/.gdbinit
+				mark_s_file ~/.gdbinit
+				cat ./.gdbinit >> ~/.gdbinit
+				mark_e_file ~/.gdbinit
+			else
+				>&2 echo "Please, install 'gdb' package"
+				exit 1
 			fi
-
-			remove_marked_lines ~/.gdbinit
-			mark_s_file ~/.gdbinit
-			cat ./.gdbinit >> ~/.gdbinit
-			mark_e_file ~/.gdbinit
 		;;
 
 		"--neomutt")
-			mkdir -p ~/.config/neomutt/colorschemes &>/dev/null | true
-			cp -r ./.config/neomutt/colorschemes ~/.config/neomutt/colorschemes
-			cp ./.neomuttrc ~/
+			bold_message "Neomutt installation"
+			if check_package neomutt; then
+				mkdir -p ~/.config/neomutt/colorschemes &>/dev/null | true
+				cp -rv ./.config/neomutt/colorschemes ~/.config/neomutt/colorschemes
+				cp -v ./.neomuttrc ~/
+			else
+				>&2 echo "Please, install 'neomutt' package"
+				exit 1
+			fi
 		;;
 
-		"--sources.list")
-			sudo cp ./etc/apt/sources.list /etc/apt/
+		"--dircolors")
+			bold_message "dircolors installation"
+			cp -v ./.dircolors ~/
 		;;
 
-		"--other")
-			bold_message "Other"
-
-			cp ./.gitconfig ~/
-			cp ./.dircolors ~/
-			cp ./.config/user-dirs.dirs ~/.config
-			cp ./.config/user-dirs.locale ~/.config
-
+		"local-bin")
+			bold_message "~/.local/bin installation"
 			mkdir ~/.local/bin &>/dev/null | true
-			cp .local/bin/* ~/.local/bin
+			cp -v ./.local/bin/* ~/.local/bin
+		;;
 
+		"local-share")
+			bold_message "~/.local/share installation"
 			mkdir ~/.local/share &>/dev/null | true
-			cp -r .local/share/* ~/.local/share
+			cp -rv ./.local/share/* ~/.local/share
+		;;
+
+		"gitconfig")
+			bold_message "~/.gitconfig installation"
+			if check_package git; then
+				cp -v ./.gitconfig ~/
+			else
+				>&2 echo "Please, install 'git' package"
+				exit 1
+			fi
 		;;
 
                 "-h" | "--help") usage ;;
