@@ -57,8 +57,8 @@ On a clean Debian virtual machine:
 $ git clone https://github.com/iikrllx/dotfiles-debian.git
 $ cd dotfiles-debian
 $ ./init.sh --initd --sources.list --install-packages --clean-home --bashrc --bash-completion \
-            --xfce --xfce-terminal --mc --tmux --vim --mousepad --gdb --neomutt --dircolors \
-            --local-bin --local-share
+            --xfce --xfce-terminal --mc --tmux --vim --mousepad --gdb --neomutt --newsboat \
+            --dircolors --local-bin --local-share
 $ reboot
 ```
 Enjoy.

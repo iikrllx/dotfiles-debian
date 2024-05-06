@@ -72,7 +72,6 @@ Usage: $(basename $0) [option]
   --sources.list         the latest up-to-date Debian repositories
                          sources.list installation
 
-
   --install-packages     install useful packages
 
   --clean-home           cleanup home directory
@@ -94,7 +93,6 @@ Usage: $(basename $0) [option]
   --xfce-terminal        xfce terminal emulator installation (xfce4-terminal)
                          ~/.config/xfce4/terminal/terminalrc + colorschemes
 
-
   --mc                   midnight commander installation
 
   --tmux                 terminal multiplexer installation
@@ -106,6 +104,8 @@ Usage: $(basename $0) [option]
   --gdb                  gdb debugger installation
 
   --neomutt              mail client neomutt installation
+
+  --newsboat             rss feed reader installation
 
   --dircolors            dircolors installation
 
@@ -175,7 +175,7 @@ for arg in "$@"; do
 			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
 			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip \
 			ca-certificates openssl gpg dnsutils traceroute whois tcpdump nmap wget curl netcat \
-			net-tools dirmngr nfs-common)
+			net-tools dirmngr nfs-common newsboat)
 
 			deb=(apt-file dpkg-dev devscripts lintian cdbs debootstrap pbuilder dconf-cli automake \
 			autoconf dh-make debhelper build-essential autotools-dev)
@@ -390,6 +390,17 @@ for arg in "$@"; do
 				cp -v ./.neomuttrc ~/
 			else
 				>&2 echo "Please, install 'neomutt' package"
+				exit 1
+			fi
+		;;
+
+		"--newsboat")
+			bold_message "RSS feed reader installation"
+			if check_package newsboat; then
+				mkdir ~/.newsboat &>/dev/null | true
+				cp -v ./.newsboat/* ~/.newsboat
+			else
+				>&2 echo "Please, install 'newsboat' package"
 				exit 1
 			fi
 		;;
