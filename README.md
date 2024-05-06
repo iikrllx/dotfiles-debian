@@ -47,7 +47,8 @@ Terminal Emulator with Tmux:
 - <strong>Debuger:</strong> ```GDB Dashboard```
 - <strong>Version control system:</strong> ```Git```
 - <strong>Text-mode interface for git:</strong> ```Tig```
-- <strong>Mail Client:</strong> ```neomutt```
+- <strong>Mail Client:</strong> ```Neomutt```
+- <strong>RSS Feed Reader:</strong> ```Newsboat```
 - <strong>Additional packages:</strong> [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
 ## Test all environment
