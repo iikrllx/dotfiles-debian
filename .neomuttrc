@@ -27,10 +27,14 @@ set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 
 mailboxes +INBOX
 mailboxes "+INBOX/Social"
+mailboxes "+INBOX/Newsletters"
+mailboxes "+INBOX/News"
 mailboxes +Отправленные
 mailboxes +Черновики
 mailboxes +Корзина
 mailboxes +Спам
+
+set index_format="%4C %Z %{%d/%m/%Y %H:%M:%S} %Y   %n    %s"
 
 set mail_check = 4
 set editor = vim
