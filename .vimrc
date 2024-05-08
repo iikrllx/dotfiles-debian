@@ -4,7 +4,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 Plug 'iberianpig/tig-explorer.vim'
 
 call plug#end()
@@ -27,6 +27,11 @@ set background=dark       " dark or light
 
 " visual mode change color highlight
 highlight Visual cterm=bold ctermbg=Gray ctermfg=NONE
+
+" 'vim-airline/vim-airline' has a lot of unnecessary information
+" these lines are simpler
+set statusline=%{getcwd()}/%<%f
+highlight StatusLine ctermfg=Gray ctermbg=Black
 
 " show hidden files (nerdtree plugin)
 let NERDTreeShowHidden=1
