@@ -34,8 +34,6 @@ mailboxes +Черновики
 mailboxes +Корзина
 mailboxes +Спам
 
-set index_format="%4C %Z %{%d/%m/%Y %H:%M:%S} %Y   %n    %s"
-
 set mail_check = 4
 set editor = vim
 set imap_keepalive = 900
