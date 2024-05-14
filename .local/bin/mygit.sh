@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This script manage all my git projects (simple git operations).
 #
@@ -12,17 +12,23 @@ fi
 
 usage()
 {
+if (( $1 )); then
+        >&2 echo "Try '$(basename $0) --help' for more information"
+        exit 1
+else
 cat << EOF
 $(echo -e "\e[96mUsage: $(basename $0) [options]\e[0m")
-Multiple Git Control (simple git operations)
+Multiple Git Control (simple git operations).
 
   clone         clone my projects in current directory
   pull          pull from my projects. all branches
   status        status from my projects. current branch
+  help          show this help and exit
 
 EOF
 
-exit
+exit 0
+fi
 }
 
 git_action()
@@ -88,9 +94,8 @@ case $1 in
 			fi
 		done
 	;;
-
 	'pull') git_action $myenv "pull" ;;
 	'status') git_action $myenv "status" ;;
-
-	*) usage ;;
+	'help') usage 0 ;;
+	*) usage 1 ;;
 esac

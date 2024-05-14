@@ -156,8 +156,10 @@ Date to clipboard.
 this script manage all my git projects (simple git operations).<br/>
 [crypt.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
 this script encrypt/decrypt regular file with sensitive information (using a password).<br/>
-[skeleton.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skeleton.sh) -
+[skel-c.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skel-c.sh) -
 prepare the skeleton of the C source code.<br/>
+[checksums.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/checksums.sh) -
+wrapper script for 'md5sum' utility. actual to use together with crontab.<br/>
 
 ## xfce4-terminal
 Installation Xfce Terminal Emulator configuration with colorschemes + dircolors.
