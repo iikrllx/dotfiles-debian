@@ -37,7 +37,7 @@ git_action()
 
 	current_dirs=$(dirname $(find $path -type d -name '.git'))
 	for dir in ${current_dirs[*]}; do
-		echo -e "\e[96m*** ----- '$dir' ----- ***\e[0m"
+		echo -e "\e[96m*** ----- $dir ----- ***\e[0m"
 		cd $dir
 
 		if [ "$option" == "pull" ]; then
