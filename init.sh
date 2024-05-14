@@ -407,19 +407,19 @@ for arg in "$@"; do
 			cp -v ./.dircolors ~/
 		;;
 
-		"local-bin")
+		"--local-bin")
 			bold_message "~/.local/bin installation"
 			mkdir ~/.local/bin &>/dev/null | true
 			cp -v ./.local/bin/* ~/.local/bin
 		;;
 
-		"local-share")
+		"--local-share")
 			bold_message "~/.local/share installation"
 			mkdir ~/.local/share &>/dev/null | true
 			cp -rv ./.local/share/* ~/.local/share
 		;;
 
-		"gitconfig")
+		"--gitconfig")
 			bold_message "~/.gitconfig installation"
 			if check_package git; then
 				cp -v ./.gitconfig ~/
