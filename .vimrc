@@ -30,7 +30,7 @@ highlight Visual cterm=bold ctermbg=Gray ctermfg=NONE
 
 " 'vim-airline/vim-airline' has a lot of unnecessary information
 " these lines are simpler
-set statusline=%{getcwd()}/%<%f
+set statusline=%{getcwd()}/:%<%f
 highlight StatusLine ctermfg=Gray ctermbg=Black
 
 " show hidden files (nerdtree plugin)
