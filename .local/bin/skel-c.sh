@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Prepare the skeleton of the C source code.
 #

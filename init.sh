@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This main project script which configure/install my Debian environment (dotfiles).
 # Configures the necessary tools for development and convenience.
@@ -7,10 +7,7 @@
 # Be careful when running this script on your main machine,
 # it does not create backup dotfiles and may erase your current working environment.
 #
-# After the
-# $ ./init.sh --xfce
-# or
-# $ ./init.sh --xfce-hotkeys
+# After the $ ./init.sh --xfce OR $ ./init.sh --xfce-hotkeys
 # need to session restart.
 #
 
