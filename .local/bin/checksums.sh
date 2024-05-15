@@ -13,6 +13,12 @@ if [ $(id -u) != 0 ]; then
 	exit 1
 fi
 
+# this variable may be empty in crontab environment
+if [ -z $SUDO_USER ]; then
+	>&2 echo "'\$SUDO_USER' variable empty."
+	exit 1
+fi
+
 usage()
 {
 if [ $1 -eq 1 ]; then
