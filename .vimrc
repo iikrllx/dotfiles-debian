@@ -21,6 +21,7 @@ set incsearch             " incrementally highlight matching
 set ignorecase            " ignore capital letters during search
 set noswapfile            " disable .swap files
 set background=dark       " dark or light
+set textwidth=80          " max 80 characters line
 
 " list all vim color schemes :colorscheme <Tab>
 " colorscheme slate
@@ -52,6 +53,8 @@ nnoremap <Leader>t :TigOpenProjectRootDir<CR>
 nnoremap <Leader>q :set list! listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:↲,precedes:«,extends:»<CR>
 " Copy the current visual selection to the file (save these lines)
 vnoremap <C-c> :w !echo '' >> ~/vbuf && cat >> ~/vbuf<CR>:let @+ = getline('.')<CR><CR>
+" Automatic word wrapping
+nnoremap <C-i> gggqG
 
 " Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
