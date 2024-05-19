@@ -1,0 +1,10 @@
+# ~/.vv: executed by bash(1) for non-login shells.
+
+[ ! -z $PATH ] && echo "\$PATH: $PATH"
+[ ! -z $LD_PRELOAD ] && echo "\$LD_PRELOAD: $LD_PRELOAD"
+[ ! -z $LD_LIBRARY_PATH ] && echo "\$LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
+[ ! -z $PYTHONPATH ] && echo "\$PYTHONPATH: $PYTHONPATH"
+[ ! -z $PERL5LIB ] && echo "\$PERL5LIB: $PERL5LIB"
+[ ! -z $RUBYLIB ] && echo "\$RUBYLIB: $RUBYLIB"
+[ ! -z $HTTP_PROXY ] && echo "\$HTTP_PROXY: $HTTP_PROXY"
+[ ! -z $HTTPS_PROXY ] && echo "\$HTTPS_PROXY: $HTTPS_PROXY"

@@ -230,6 +230,7 @@ for arg in "$@"; do
 			remove_marked_lines ~/.bashrc
 			mark_s_file ~/.bashrc
 			cat ./.bashrc >> ~/.bashrc
+			cp -v ./.vv ~/
 			mark_e_file ~/.bashrc
 		;;
 

@@ -26,7 +26,7 @@ _to_stderr()
 c-tm()
 {
     if command -v at >/dev/null; then
-        if [ ! -z $1 ]; then
+        if [ ! -z "$1" ]; then
             echo "aplay ~/.local/share/prompt.wav" | \
             at now + "$1" minute
         else
@@ -84,7 +84,7 @@ c-rnd-1()
 # need to specify the file format ("txt", "jpg", etc.)
 c-rename()
 {
-    if [ ! -z $1 ]; then
+    if [ ! -z "$1" ]; then
         for file in *.$1; do
             s=$(_generate_random_string)
 
@@ -181,10 +181,12 @@ PS1='\[\e[0;33m\]\A|\[\e[0;32m\]\h:\[\e[0;36m\]\w \[\033[0;34m\]\u\[\e[0m\] \$ '
 # https://wintelguy.com/umask-calc.pl
 (( $(umask) != 077 )) && umask 077
 
-# message
-echo "don't forget to turn on 'c-tm' save your eyes (break reminder)"
-
 # start the terminal multiplexer
 if command -v tmux >/dev/null; then
-    [ -z $TMUX ] && tmux
+    [ -z "$TMUX" ] && tmux
+fi
+
+# check vulnerable variables
+if [ -f "$HOME/.vv" ]; then
+    . "$HOME/.vv"
 fi
