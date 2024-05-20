@@ -5,8 +5,8 @@
 
 uniq_name=$(echo $(cat /dev/urandom | tr -dc 'a-z0-9' | head -c 8).c)
 
-if [ ! -e $uniq_name ]; then
-cat << EOF > $uniq_name
+if [ ! -e "$uniq_name" ]; then
+cat << EOF > "$uniq_name"
 #include <time.h>
 #include <stdio.h>
 #include <ctype.h>
@@ -36,4 +36,4 @@ break main
 run
 EOF
 
-ls $uniq_name main.gdb
+ls "$uniq_name" main.gdb
