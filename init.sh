@@ -226,12 +226,18 @@ for arg in "$@"; do
 		;;
 
 		"--bashrc")
-			bold_message "~/.bashrc extra rules installation"
+			bold_message "Bash read extra rules installation"
 			remove_marked_lines ~/.bashrc
 			mark_s_file ~/.bashrc
 			cat ./.bashrc >> ~/.bashrc
-			cp -v ./.vv ~/
 			mark_e_file ~/.bashrc
+
+			remove_marked_lines ~/.profile
+			mark_s_file ~/.profile
+			cat ./.profile >> ~/.profile
+			mark_e_file ~/.profile
+
+			cp -v ./.vv ~/
 		;;
 
 		"--bash-completion")
@@ -248,9 +254,8 @@ for arg in "$@"; do
 		"--locales")
 			bold_message "Generate locales"
 			if check_package locales; then
-				# for the shell, I use 'en_US.UTF-8'
-				# for the interface 'ru_RU.UTF-8'
-				# maybe something will change in the future
+				# for the shell, I use 'en_US.UTF-8' (look '--bashrc')
+				# for the interface 'en_US.UTF-8'
 
 				for loc in en_US.UTF-8 ru_RU.UTF-8; do
 					if ! grep ^$loc /etc/locale.gen &>/dev/null; then

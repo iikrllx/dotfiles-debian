@@ -1,6 +1,6 @@
 # ~/.vv: executed by bash(1) for non-login shells.
 
-[ ! -z $PATH ] && echo "\$PATH: $PATH"
+[ ! -z $PATH ] && echo "\$PATH: $(echo $PATH | tr ':' ' ')"
 [ ! -z $LD_PRELOAD ] && echo "\$LD_PRELOAD: $LD_PRELOAD"
 [ ! -z $LD_LIBRARY_PATH ] && echo "\$LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
 [ ! -z $PYTHONPATH ] && echo "\$PYTHONPATH: $PYTHONPATH"
