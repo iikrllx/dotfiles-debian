@@ -1,13 +1,8 @@
 <div align="center">
 <img src="https://github.com/iikrllx/dotfiles-debian/blob/master/images/logo-no-background.svg">
-<a href="https://github.com/iikrllx/dotfiles-debian">
-    <img src="https://img.shields.io/badge/debian-%23CE0056?style=flat&logo=Debian&logoColor=%23CE0056&label=dotfiles&labelColor=white">
-</a>
-<a href="https://github.com/iikrllx/dotfiles-debian/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/GPLv3-green?style=flat&label=License&labelColor=blue">
-</a>
 </div>
 
+## My Debian Dotfiles
 This is my Debian dotfiles (backup). Configuration files, useful scripts and aliases for my work, backgrounds,
 notes, color schemes, etc. There are not only dotfiles here, but also some normal files that can be in ```/etc```.
 
@@ -21,16 +16,6 @@ Xfce Desktop:
 Terminal Emulator with Tmux:
 ![screenshot](./images/example-b.png)
 
-## Table of contents
-- [Description of the environment](#description-of-the-environment)
-- [Test all environment](#test-all-environment)
-- [Install the environment using a script](#install-the-environment-using-a-script)
-- [Bashrc](#bashrc)
-- [Scripts](#scripts)
-- [xfce4-terminal](#xfce4-terminal)
-- [Application shortcuts](#application-shortcuts)
-- [The best old-school fonts in my opinion](#the-best-old-school-fonts-in-my-opinion)
-
 ## Description of the environment
 - <strong>OS:</strong> ```Debian```
 - <strong>DE:</strong> ```Xfce```
@@ -40,13 +25,13 @@ Terminal Emulator with Tmux:
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
 - <strong>Text Editor:</strong> ```Vim```, ```Mousepad```
-- <strong>Terminal File Navigation:</strong> ```MC```
+- <strong>Terminal File Navigation:</strong> ```Midnight Commander```
 - <strong>Terminal Emulator:</strong> ```xfce4-terminal```
 - <strong>Terminal Multiplexer:</strong> ```Tmux```
 - <strong>Compiler:</strong> ```GCC```
 - <strong>Debuger:</strong> ```GDB Dashboard```
 - <strong>Version control system:</strong> ```Git```
-- <strong>Text-mode interface for git:</strong> ```Tig```
+- <strong>Text-mode interface for Git:</strong> ```Tig```
 - <strong>Mail Client:</strong> ```Neomutt```
 - <strong>RSS Feed Reader:</strong> ```Newsboat```
 - <strong>Additional packages:</strong> [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
@@ -69,100 +54,31 @@ Usage information:
 ```
 $ ./init.sh --help
 ```
-For example, [configure](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+For example, [initialize](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 [.bashrc](https://github.com/iikrllx/dotfiles-debian/blob/master/.bashrc)
 (bash read), [vim](https://github.com/iikrllx/dotfiles-debian/blob/master/.vimrc) and
-[tmux](https://github.com/iikrllx/dotfiles-debian/blob/master/.tmux.conf):
+[tmux](https://github.com/iikrllx/dotfiles-debian/blob/master/.tmux.conf) configurations:
 ```
 $ ./init.sh --bashrc --vim --tmux
 ```
-
-## Bashrc
-Functions:
-
-```
-$ c-tm
-$ c-tmr
-```
-I use these functions as a timer with a signal.
-Remind myself of something.
-
----
-
-```
-$ c-cc
-```
-Clear the clipboard.
-
----
-
-```
-$ c-rnd-0
-$ c-rnd-1
-```
-Generate random symbols.<br/>
-c-rnd-0 (12 a-z0-9 symbols to clipboard)<br/>
-c-rnd-1 (28 a-zA-Z0-9 symbols to stdout)<br/>
-
----
-
-```
-$ c-rename
-```
-Renames all files to random names in the current directory. For example:
-```
-$ ls
-a.txt  b.txt  my-secrets.txt  secret.txt
-
-$ c-rename "txt"
-$ ls
-1z2otasm1idc.txt  7ixi4wocijea.txt  ttowy8plqm2y.txt  x74gy8x7si42.txt
-```
-
----
-
-```
-$ c-deb-clean
-```
-I like use this function for clean 'rc' packages, debs autoremove and autoclean.
-
----
-
-```
-$ c-sd
-$ c-rb
-```
-Shutdown and reboot.
-
----
-
-```
-$ c-vb
-```
-Vim open ~/vbuf file.<br/>
-This file has saved lines from the clipboard.<br/>
-
----
-
-```
-$ c-date
-```
-Date to clipboard.
-
----
+**Attention**. Be careful when running this script on your main machine, it does not create backup dotfiles and may ~~erase~~ your current working environment.
 
 ## Scripts
+Location: [.local/bin/](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin)
+
+Few examples:<br/>
 [mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
-this script manage all my git projects (simple git operations).<br/>
+manages all my git projects (simple git operations).<br/>
 [crypt.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
-this script encrypt/decrypt regular file with sensitive information (using a password).<br/>
-[skel-c.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/skel-c.sh) -
-prepare the skeleton of the C source code.<br/>
+encrypt/decrypt regular file with sensitive information (using a password).<br/>
+[deb-clean.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/deb-clean.sh) -
+remove 'rc' (removed but not purged) packages plus debs autoremove and autoclean.<br/>
 [checksums.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/checksums.sh) -
 wrapper script for 'md5sum' utility. actual to use together with crontab.<br/>
 
 ## xfce4-terminal
-Installation Xfce Terminal Emulator configuration with colorschemes + dircolors.
+Installation [Xfce Terminal Emulator](https://github.com/iikrllx/dotfiles-debian/blob/master/.config/xfce4/terminal/terminalrc) configuration with
+[colorschemes](https://github.com/iikrllx/dotfiles-debian/tree/master/.local/share/xfce4/terminal/colorschemes) + [dircolors](https://github.com/iikrllx/dotfiles-debian/blob/master/.dircolors).
 ```
 $ ./init.sh --xfce-terminal --dircolors
 ```
@@ -175,6 +91,8 @@ Example of changing the terminal color scheme.
 ![screenshot](./images/terminal-d.png)
 
 ## Application shortcuts
+My ```xfce4-keyboard-shortcuts.xml``` [here](https://github.com/iikrllx/dotfiles-debian/blob/master/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml)
+
 ```
 $ ./init.sh --xfce-hotkeys
 ```
@@ -198,7 +116,7 @@ unifont-jp regular
 hack regular
 ```
 
-Example of changing the font.
+Example of changing the terminal font.
 
 ![screenshot](./images/font-a.png)
 ![screenshot](./images/font-b.png)
