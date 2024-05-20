@@ -107,9 +107,9 @@ bind pager j next-line
 bind pager k previous-line
 bind pager l view-attachments
 bind index D delete-message
+bind index H purge-message
 bind index U undelete-message
 bind index L limit
-bind index h noop
 bind index l display-message
 bind browser h goto-parent
 bind browser l select-entry
