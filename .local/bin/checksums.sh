@@ -14,7 +14,7 @@ if [ $(id -u) != 0 ]; then
 fi
 
 # this variable may be empty in crontab environment
-if [ -z $SUDO_USER ]; then
+if [ -z "$SUDO_USER" ]; then
 	>&2 echo "'\$SUDO_USER' variable empty."
 	exit 1
 fi
@@ -40,26 +40,25 @@ exit 0
 fi
 }
 
-tmpf=/tmp/sums
-failed=/home/$SUDO_USER/.$(date +"%d-%m-%Y-%H:%M:%S")
+tmpf="/tmp/sums"
+failed="/home/$SUDO_USER/.$(date +'%d-%m-%Y-%H:%M:%S')"
 
-case $1 in
+case "$1" in
 # before
 '-b')
-	rm $tmpf >/dev/null 2>&1
+	rm "$tmpf" >/dev/null 2>&1
 	for p in /etc /usr/bin /usr/sbin /usr/lib /boot; do
-		find $p -type f | while read -r f; do
-			md5sum "$f" >> $tmpf
+		find "$p" -type f | while read -r f; do
+			md5sum "$f" >> "$tmpf"
 		done
 	done
 	;;
 # after
 '-a')
-	if [ -s $tmpf ]; then
-		md5sum -c --quiet $tmpf > $failed 2>/dev/null
-		[ ! -s $failed ] && rm $failed
-		chown $SUDO_USER: $failed
-		rm $tmpf
+	if [ -s "$tmpf" ]; then
+		md5sum -c --quiet "$tmpf" > "$failed" 2>/dev/null
+		[ ! -s "$failed" ] && rm "$failed" || chown "$SUDO_USER:" "$failed"
+		rm "$tmpf"
 	else
 		usage 1
 	fi
