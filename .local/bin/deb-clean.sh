@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Remove 'rc' (removed but not purged) packages
 # plus debs autoremove and autoclean.
