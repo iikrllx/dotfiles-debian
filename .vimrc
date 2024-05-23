@@ -54,7 +54,7 @@ nnoremap <Leader>q :set list! listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eo
 " Copy the current visual selection to the file (save these lines)
 vnoremap <C-c> :w !echo '' >> ~/vbuf && cat >> ~/vbuf<CR>:let @+ = getline('.')<CR><CR>
 " Automatic word wrapping
-nnoremap <C-i> gggqG
+xnoremap <C-i> gq
 
 " Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
