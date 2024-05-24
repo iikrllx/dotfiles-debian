@@ -35,10 +35,12 @@ autom4te*.cache
 aclocal.m4
 compile
 config.h
+config.h.in~
 config.h.in
 config.log
 config.status
 configure
+configure~
 depcomp
 install-sh
 missing
