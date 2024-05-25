@@ -45,7 +45,7 @@ vtouch()
 {
     for i do
         touch "$i"
-        echo "touched: '$i'"
+        [ $? == 0 ] && echo "touched: '$i'"
     done
 }
 
