@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Prepare the skeleton of the C source code.
+# Prepare the skeleton of the C program.
 #
 
 uniq_name=$(echo $(cat /dev/urandom | tr -dc 'a-z0-9' | head -c 8).c)
