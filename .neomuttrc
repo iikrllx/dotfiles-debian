@@ -26,9 +26,6 @@ set sidebar_folder_indent
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 
 mailboxes +INBOX
-mailboxes "+INBOX/Social"
-mailboxes "+INBOX/Newsletters"
-mailboxes "+INBOX/News"
 mailboxes +Отправленные
 mailboxes +Черновики
 mailboxes +Корзина
@@ -75,6 +72,7 @@ set thorough_search
 unset mark_old
 unset confirmappend
 
+folder-hook . push '<collapse-all>'
 set status_chars = " *%A"
 set date_format = "%d.%m.%Y %H:%M"
 set uncollapse_jump
