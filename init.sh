@@ -167,18 +167,17 @@ for arg in "$@"; do
 		;;
 
 		"--install-packages")
-			tools=(nano mousepad vim vim-gtk3 gdb tmux mc git tig neomutt galculator gparted gcc make \
-			strace xsel ripgrep bash-completion pkg-config valgrind locales sudo ssh sshpass \
-			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl-base psmisc \
-			dialog whiptail exuberant-ctags hwinfo indent wipe patch fakeroot python-pip python3-pip \
-			ca-certificates openssl gpg dnsutils traceroute whois tcpdump nmap wget curl netcat \
-			net-tools dirmngr nfs-common newsboat)
+			main=(nano mousepad vim vim-gtk3 gdb tmux mc git tig neomutt newsboat galculator gparted \
+			gcc make strace xsel ripgrep bash-completion pkg-config valgrind locales sudo ssh sshpass \
+			systemd-coredump moreutils coreutils binutils diffutils mawk gawk perl perl-base psmisc \
+			dialog whiptail exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file \
+			python-pip python3-pip ca-certificates openssl gpg dnsutils traceroute whois tcpdump \
+			nmap wget curl netcat net-tools dirmngr nfs-common apt-file dpkg-dev devscripts lintian \
+			cdbs debootstrap pbuilder dconf-cli automake autoconf dh-make debhelper build-essential \
+			autotools-dev quilt)
 
-			deb=(apt-file dpkg-dev devscripts lintian cdbs debootstrap pbuilder dconf-cli automake \
-			autoconf dh-make debhelper build-essential autotools-dev)
-
-			doc=(info man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
-			linux-doc gcc-doc gcc-base-doc)
+			doc=(man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
+			linux-doc gcc-doc gcc-base-doc info)
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
 
