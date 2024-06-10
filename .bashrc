@@ -30,7 +30,8 @@ export LANG=en_US.UTF8
 export EDITOR='/usr/bin/vim'
 export BROWSER='/usr/bin/firefox'
 export TERMINAL='/usr/bin/xfce4-terminal'
-export EMAIL=krekhov.dev@mail.ru
+export DEBEMAIL=krekhov.dev@mail.ru
+export DEBFULLNAME="Kirill Rekhov"
 
 # function for my .vimrc trick (vnoremap)
 # (vim -> visual mode -> ctrl + c -> ~/vbuf)
