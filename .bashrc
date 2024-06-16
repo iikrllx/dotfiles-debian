@@ -1,8 +1,8 @@
 # aliases
 alias rmf='shred -uzn 4'
 alias rmd='wipe -rfqQ -s 8'
-alias datec='date | xsel -b -i' # input date to clipboard
-alias _date='date +"%d/%m/%Y - %H:%M:%S"'
+alias datec='date -R | xsel -b -i' # input date (RFC 5322) to clipboard (for changelog)
+alias _date='date +"%d/%m/%Y - %H:%M:%S"' # simple format
 alias ls='ls -1l --group-directories-first -hN --color'
 alias la='ls -A --color'
 alias d='cd ~/Downloads'
