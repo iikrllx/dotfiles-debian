@@ -131,7 +131,7 @@ for arg in "$@"; do
 					sudo chmod 777 /srv/ftp/upload
 				fi
 
-				sudo cp -v ./etc/vsftpd.conf /etc/vsftpd.conf
+				sudo cp -v ./root/etc/vsftpd.conf /etc/vsftpd.conf
 				sudo systemctl restart vsftpd.service
 			else
 				>&2 echo "Please, install 'vsftpd' package"
@@ -141,7 +141,7 @@ for arg in "$@"; do
 
 		"--initd")
 			bold_message "init.d script for user home directory (amnesia)"
-			sudo cp -v ./etc/init.d/clean-env /etc/init.d
+			sudo cp -v ./root/etc/init.d/clean-env /etc/init.d
 			sudo ln -s /etc/init.d/clean-env /etc/rc5.d/S00clean-env &>/dev/null | true
 			sudo ln -s /etc/init.d/clean-env /etc/rc6.d/K00clean-env &>/dev/null | true
 			sudo systemctl daemon-reload
@@ -150,20 +150,20 @@ for arg in "$@"; do
 
                 "--hosts")
 			bold_message "Hosts installation"
-			sudo cp -v ./etc/hosts /etc/hosts
+			sudo cp -v ./root/etc/hosts /etc/hosts
 			sudo sed -i "s/<MY-HOSTNAME>/$(hostname)/" /etc/hosts &>/dev/null
 		;;
 
                 "--sysctl")
 			bold_message "Kernel parameters installation"
-			sudo cp -v ./etc/sysctl.conf /etc/sysctl.conf
+			sudo cp -v ./root/etc/sysctl.conf /etc/sysctl.conf
 			sudo sysctl -p
 			echo "Core file size: $(ulimit -c)"
 		;;
 
 		"--sources.list")
 			bold_message "sources.list installation"
-			sudo cp -v ./etc/apt/sources.list /etc/apt/
+			sudo cp -v ./root/etc/apt/sources.list /etc/apt/
 		;;
 
 		"--install-packages")
