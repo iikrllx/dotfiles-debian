@@ -74,8 +74,8 @@ Usage: $(basename $0) [option]
   --clean-home           cleanup home directory
                          configure user-dirs.*
 
-  --bashrc               ~/.bashrc extra rules installation
-                         append rules to the current content of ~/.bashrc
+  --bashrc               ~/.bashrc, ~/.profile extra rules installation
+                         append rules to the current content of ~/.bashrc, ~/.profile
 
   --bash-completion      enable bash completion
 
@@ -181,7 +181,7 @@ for arg in "$@"; do
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty fonts-ibm-plex)
 
-			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop audacious)
+			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop audacious cowsay oneko)
 
 			packs=("${tools[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
 
