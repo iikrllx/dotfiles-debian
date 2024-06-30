@@ -49,7 +49,7 @@ vtouch()
         touch "$i"
         [ $? == 0 ] && echo "touched: '$i'"
     done
-}
+} && alias touch='vtouch'
 
 # .bash_history
 HISTSIZE=8000
