@@ -38,7 +38,7 @@ export DEBFULLNAME="Kirill Rekhov"
 # function for my .vimrc trick (vnoremap)
 # (vim -> visual mode -> ctrl + c -> ~/vbuf)
 # ~/vbuf file has saved lines from the clipboard
-vbuf()
+vb()
 {
     [ -s ~/vbuf ] && vim ~/vbuf || echo $?
 }
