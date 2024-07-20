@@ -174,7 +174,7 @@ for arg in "$@"; do
 			python-pip python3-pip ca-certificates openssl gpg dnsutils traceroute whois tcpdump \
 			nmap wget curl netcat net-tools dirmngr nfs-common apt-file dpkg-dev devscripts lintian \
 			cdbs debootstrap pbuilder dconf-cli automake autoconf dh-make debhelper build-essential \
-			autotools-dev quilt shc)
+			autotools-dev quilt shc tree)
 
 			doc=(man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
 			linux-doc gcc-doc gcc-base-doc info)
