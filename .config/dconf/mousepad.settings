@@ -1,6 +1,6 @@
 [preferences/view]
 color-scheme='oblivion'
-font-name='Unifont 18'
+font-name='Terminus Bold 18'
 highlight-current-line=false
 match-braces=false
 show-line-endings=false
@@ -14,11 +14,8 @@ word-wrap=true
 [preferences/window]
 statusbar-visible=true
 
-[state/application]
-session=['1;;+']
-
 [state/window]
 fullscreen=false
 height=uint32 480
-maximized=false
+maximized=true
 width=uint32 640
