@@ -29,6 +29,7 @@ alias mkdir='mkdir -v'
 
 # exports
 export LANG=en_US.UTF8
+export LC_ALL=en_US.UTF-8
 export EDITOR='/usr/bin/vim'
 export BROWSER='/usr/bin/firefox'
 export TERMINAL='/usr/bin/xfce4-terminal'

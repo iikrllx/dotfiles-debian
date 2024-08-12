@@ -8,6 +8,11 @@ Plug 'iberianpig/tig-explorer.vim'
 
 call plug#end()
 
+" view UTF-8 characters
+set encoding=utf-8
+set fileformats=unix,dos,mac
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+
 syntax on                 " syntax highlighting
 filetype indent off       " disable auto indent
 set ls=2                  " show filename in status line
