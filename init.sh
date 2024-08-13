@@ -387,9 +387,8 @@ for arg in "$@"; do
 		"--neomutt")
 			bold_message "Neomutt installation"
 			if check_package neomutt; then
-				mkdir -p ~/.config/neomutt/colorschemes &>/dev/null | true
-				cp -rv ./.config/neomutt/colorschemes ~/.config/neomutt/colorschemes
 				cp -v ./.neomuttrc ~/
+				cp -v ./.signature ~/
 			else
 				>&2 echo "Please, install 'neomutt' package"
 				exit 1
