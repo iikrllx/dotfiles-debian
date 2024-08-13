@@ -35,6 +35,7 @@ set mail_check = 4
 set editor = vim
 set imap_keepalive = 900
 
+set signature="~/.signature"
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
