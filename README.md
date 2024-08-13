@@ -103,18 +103,10 @@ These fonts are installed using [./init.sh --install-packages](https://github.co
 
 ```
 glass tty vt220 bold
-
 px ibm ega8 regular
-px ibm ega9 regular
-px ibm mda regular
-px ibm vga8 regular
-px ibm vga9 regular
-
 terminus medium
 terminus bold
-
 unifont regular
 unifont bold
-
 hack regular
 ```
