@@ -86,8 +86,8 @@ case "$1" in
 			fi
 		done
 
-		public_projects=(binout chroot-deb-builder dotfiles-debian notes \
-		glibc-with-shred typp quake3-terminal-theme)
+		public_projects=(chroot-deb-builder dotfiles-debian notes chroot-deb-builder \
+		typp quake3-terminal-theme iikrllx glibc-with-shred linux-insides-ru binout)
 
 		for name in ${public_projects[*]}; do
 			if [ ! -d "$name" ]; then
