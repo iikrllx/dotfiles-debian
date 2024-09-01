@@ -33,7 +33,7 @@ export LC_ALL=en_US.UTF-8
 export EDITOR='/usr/bin/vim'
 export BROWSER='/usr/bin/firefox'
 export TERMINAL='/usr/bin/xfce4-terminal'
-export DEBEMAIL=krekhov.dev@mail.ru
+export DEBEMAIL=krekhov.dev@gmail.com
 export DEBFULLNAME="Kirill Rekhov"
 
 # function for my .vimrc trick (vnoremap)
