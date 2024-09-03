@@ -173,11 +173,11 @@ for arg in "$@"; do
 			binutils diffutils mawk gawk perl perl-base psmisc dialog whiptail \
 			exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file python-pip \
 			python3-pip ca-certificates openssl gpg dnsutils traceroute whois tcpdump \
-			nmap wget curl netcat net-tools dirmngr nfs-common gettext)
+			nmap wget curl netcat net-tools dirmngr nfs-common gettext shc tree)
 
 			deb=(apt-file dpkg-dev devscripts lintian  cdbs debootstrap pbuilder \
 			dconf-cli automake autoconf dh-make debhelper build-essential autotools-dev \
-			quilt shc tree debconf-utils adequate piuparts licensecheck reportbug \
+			quilt debconf-utils adequate piuparts licensecheck reportbug \
 			how-can-i-help equivs debconf aptitude)
 
 			doc=(man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
