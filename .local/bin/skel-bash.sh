@@ -22,7 +22,7 @@ fi
 usage()
 {
 if (( $1 )); then
-	>&2 echo "Try '$(basename $0) --help' for more information"
+	>&2 echo "Try '$(basename $0) --help' for more information."
 	exit 1
 else
 	echo "Usage: $(basename $0) [option]"

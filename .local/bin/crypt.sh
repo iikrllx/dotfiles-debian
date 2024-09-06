@@ -6,7 +6,7 @@
 usage()
 {
 if [ $1 -eq 1 ]; then
-	>&2 echo "Try '$(basename $0) --help' for more information"
+	>&2 echo "Try '$(basename $0) --help' for more information."
 	exit 1
 else
 cat << EOF
@@ -27,12 +27,12 @@ fi
 case "$1" in
 '-f'|'--file')
 	if [ ! -f "$2" ] || [ -z "$2" ]; then
-		>&2 echo "\$2 incorrect"
+		>&2 echo "\$2 incorrect."
 		usage 1
 	fi
 
 	if [ "$USER" != "$(stat -c %U $2)" ]; then
-		>&2 echo "'$USER' you have no perms"
+		>&2 echo "'$USER' you have no perms."
 		exit 1
 	fi
 
@@ -42,7 +42,7 @@ case "$1" in
 		if file "$2" | grep -E "openssl|salted"; then
 			# decrypt file
 			if ! openssl enc -d -aes256 -pbkdf2 -in "$2" 2>/dev/null; then
-				>&2 echo "Something went wrong, try again"
+				>&2 echo "Something went wrong, try again."
 				exit 1
 			fi
 		else

@@ -12,7 +12,7 @@ if [ -s "$1" ] ; then
 			echo "$l - $?"
 		done
 	else
-		>&2 echo "The file '$1' has no links"
+		>&2 echo "The file '$1' has no links."
 		exit 1
 	fi
 else

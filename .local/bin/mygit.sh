@@ -1,29 +1,38 @@
 #!/usr/bin/env bash
 #
-# Manages all my git projects (simple git operations).
+# Manages my git projects (simple git operations).
 #
 
 myenv="$HOME/git/myenv"
+salsa="$HOME/git/salsa"
 
-if [ ! -d "$myenv" ]; then
-	echo >&2 "$myenv directory not exist"
-	exit 1
-fi
+for dir in "$myenv" "$salsa"; do
+	if [ ! -d "$dir" ]; then
+		echo >&2 "'$dir' directory not exist."
+		exit 1
+	fi
+done
 
 usage()
 {
 if (( $1 )); then
-        >&2 echo "Try '$(basename $0) help' for more information"
+        >&2 echo "Try '$(basename $0) help' for more information."
         exit 1
 else
 cat << EOF
 $(echo -e "\e[96mUsage: $(basename $0) [options]\e[0m")
 Multiple Git Control (simple git operations).
 
-  clone         clone my projects in current directory
-  pull          pull from my projects. all branches
-  status        status from my projects. current branch
-  help          show this help and exit
+  clone0         clone my GitHub projects in current directory
+  clone1         clone my favorite Salsa projects in current directory
+
+  pull0          pull from my GitHub projects. all branches
+  pull1          pull from my favorite Salsa projects. all branches
+
+  status0        status from my GitHub projects. current branch
+  status1        status from my favorite Salsa projects. current branch
+
+  help           show this help and exit
 
 EOF
 
@@ -34,8 +43,13 @@ fi
 git_action()
 {
 	path="$1" option="$2"
+	current_dirs="$(dirname $(find $path -type d -name '.git') 2>/dev/null)"
 
-	current_dirs="$(dirname $(find $path -type d -name '.git'))"
+	if [ -z "$current_dirs" ]; then
+		echo >&2 "'$path' there are no projects in this directory."
+		exit 1
+	fi
+
 	for dir in ${current_dirs[*]}; do
 		echo -e "\e[96m*** ----- $dir ----- ***\e[0m"
 		cd "$dir"
@@ -77,27 +91,52 @@ git_action()
 }
 
 case "$1" in
-	'clone')
-		private_projects=$(ssh rserver-git '_ls projects')
-		for name in ${private_projects[*]}; do
-			if [ ! -d "$name" ]; then
-				git clone "rserver-git:projects/$name"
-				echo
-			fi
-		done
+	# 0 - means https://github.com/iikrllx my projects
+	# 1 - means https://salsa.debian.org/public my favorite projects
 
-		public_projects=(chroot-deb-builder dotfiles-debian notes chroot-deb-builder \
-		typp quake3-terminal-theme iikrllx glibc-with-shred linux-insides-ru binout)
+	'clone0')
+		projects=(notes dotfiles-debian chroot-deb-builder iikrllx \
+		typp quake3-terminal-theme glibc-with-shred linux-insides-ru binout)
 
-		for name in ${public_projects[*]}; do
+		for name in ${projects[*]}; do
 			if [ ! -d "$name" ]; then
 				git clone "git@github.com:iikrllx/$name"
 				echo
 			fi
 		done
 	;;
-	'pull') git_action "$myenv" "pull" ;;
-	'status') git_action "$myenv" "status" ;;
+
+	'clone1')
+		projects=(bash tmux vim mousepad xfce4 xfce4-terminal \
+		strace xterm tig tree aptitude cowsay oneko \
+		ncurses mc webwml manpages-l10n)
+
+		# webwml not a package: https://salsa.debian.org/webmaster-team/webwml
+		# aptitude not clone from the script (i don't know why):
+		# https://salsa.debian.org/apt-team/aptitude.git
+
+		for name in ${projects[*]}; do
+			vcs=$(apt-get -t sid --print-uris --only-source source "$name" 2>/dev/null | grep -E 'https|salsa')
+			if [ $? != 0 ]; then
+				echo >&2 "$name is not loaded on salsa."
+				echo; continue
+			fi
+
+			repo=$(echo "$vcs" | head -1)
+			dir=$(basename 2>/dev/null $(basename "$repo" .git))
+
+			if [ ! -d "$dir" ]; then
+				git clone "$repo"
+				echo
+			fi
+		done
+	;;
+
+	'pull0') git_action "$myenv" "pull" ;;
+	'pull1') git_action "$salsa" "pull" ;;
+	'status0') git_action "$myenv" "status" ;;
+	'status1') git_action "$salsa" "status" ;;
 	'help') usage 0 ;;
+
 	*) usage 1 ;;
 esac
