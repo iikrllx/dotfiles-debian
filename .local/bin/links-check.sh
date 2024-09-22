@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# Check response http|https links from file.
+# Checks the availability of URLs extracted from a specified file, reporting the status of each
+# link. Checks response http|https links from file.
 #
 
 if [ -s "$1" ] ; then

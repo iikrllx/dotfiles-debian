@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Get random symbols to clipboard.
+# Generates a random alphanumeric string of a specified length and copies it to the clipboard.
 #
 
 if [ ! -z "$1" ]; then

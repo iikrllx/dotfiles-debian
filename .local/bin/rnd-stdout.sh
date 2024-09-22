@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Get random symbols to stdout.
+# Generates a random alphanumeric string of a specified length.
 #
 
 if [ ! -z "$1" ]; then

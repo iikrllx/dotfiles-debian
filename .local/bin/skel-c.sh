@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# Prepare the skeleton of the C program.
+# Generates a C source file with a random name containing a basic program structure and a GDB script
+# to start debugging from the main function.
 #
 
 uniq_name=$(echo $(cat /dev/urandom | tr -dc 'a-z0-9' | head -c 8).c)

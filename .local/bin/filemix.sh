@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Renames ALL files to random names in current directory.
+# Renames all files of a specified format in the current directory to unique random names.
 # Need to specify the file format ("txt", "jpg", etc.).
 #
 
