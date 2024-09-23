@@ -110,7 +110,7 @@ case "$1" in
 	'clone1')
 		projects=(bash tmux vim mousepad xfce4 xfce4-terminal \
 		strace xterm tig tree aptitude cowsay oneko \
-		ncurses mc webwml manpages-l10n)
+		ncurses mc grub2 webwml manpages-l10n)
 
 		# webwml not a package: https://salsa.debian.org/webmaster-team/webwml
 		# aptitude not clone from the script (i don't know why):
