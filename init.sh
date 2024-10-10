@@ -178,7 +178,7 @@ for arg in "$@"; do
 			deb=(apt-file dpkg-dev devscripts lintian  cdbs debootstrap pbuilder \
 			dconf-cli automake autoconf dh-make debhelper build-essential autotools-dev \
 			quilt debconf-utils adequate piuparts licensecheck reportbug \
-			how-can-i-help equivs debconf aptitude duck blhc)
+			how-can-i-help equivs debconf aptitude duck blhc gobject-introspection)
 
 			doc=(man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
 			linux-doc gcc-doc gcc-base-doc info)
