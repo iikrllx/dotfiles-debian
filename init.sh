@@ -189,7 +189,7 @@ for arg in "$@"; do
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
 			audacious cowsay oneko)
 
-			packs=("${tools[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
+			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
 
 			bold_message "Install useful packages"
 			sudo apt-get update
