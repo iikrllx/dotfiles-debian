@@ -289,12 +289,19 @@ for arg in "$@"; do
 				>&2 echo "Current desktop environment not 'xfce'"
 				exit 1
 			fi
+
+			# max brightness for laptops
+			device_name=$(find /sys/class/backlight/ -mindepth 1)
+			if [ ! -z "$device_name" ]; then
+				max_brightness=$(cat $device_name/max_brightness)
+				echo $max_brightness | sudo tee $device_name/brightness
+			fi
 		;;
 
 		"--xfce-hotkeys")
 			bold_message "XFCE keyboard shortcuts installation"
 			if check_package xfce4; then
-				cp -v ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+				cp -v ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml \
 				~/.config/xfce4/xfconf/xfce-perchannel-xml
 			else
 				>&2 echo "Current desktop environment not 'xfce'"
