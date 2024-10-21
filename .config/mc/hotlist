@@ -1,5 +1,2 @@
 ENTRY "/sh://rserver" URL "/sh://rserver/home"
 ENTRY "/sh://laptop" URL "/sh://laptop/home"
-ENTRY "/sh://wb" URL "/sh://wb/home"
-ENTRY "/sh://hb" URL "/sh://hb/home"
-ENTRY "/sh://lb" URL "/sh://lb/home"
