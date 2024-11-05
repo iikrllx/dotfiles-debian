@@ -4,7 +4,7 @@
 # My favorite Debian packages here (for maintenance work).
 #
 
-misc_packages=(bash tmux vim strace xterm tig tree aptitude ncurses mc grub2)
+misc_packages=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses grub2)
 
 # Debian Xfce Maintainers
 xfce_packages=(\
@@ -24,10 +24,10 @@ xfce4-mount-plugin xfce4-mpc-plugin xfce4-netload-plugin xfce4-notifyd gir1.2-li
 libxfce4panel-2.0-4 libxfce4panel-2.0-dev xfce4-panel xfce4-panel-profiles xfce4-places-plugin \
 xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins xfce4-pulseaudio-plugin \
 xfce4-screenshooter xfce4-sensors-plugin xfce4-session xfce4-helpers xfce4-settings \
-xfce4-smartbookmark-plugin xfce4-systemload-plugin xfce4-taskmanager xfce4-terminal \
-xfce4-timer-plugin xfce4-verve-plugin xfce4-wavelan-plugin xfce4-weather-plugin \
-xfce4-whiskermenu-plugin xfce4-xkb-plugin gir1.2-xfconf-0 libxfconf-0-3 libxfconf-0-dev xfconf \
-xfdesktop4 xfdesktop4-data xfwm4)
+xfce4-smartbookmark-plugin xfce4-systemload-plugin xfce4-taskmanager xfce4-timer-plugin \
+xfce4-verve-plugin xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin \
+xfce4-xkb-plugin gir1.2-xfconf-0 libxfconf-0-3 libxfconf-0-dev xfconf xfdesktop4 \
+xfdesktop4-data xfwm4)
 
 mkdir ~/sources 2>/dev/null
 mkdir ~/sources/misc 2>/dev/null

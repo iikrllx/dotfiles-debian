@@ -130,7 +130,7 @@ case "$1" in
 	;;
 
 	'clone1')
-		misc_projects=(bash tmux vim strace xterm tig tree aptitude ncurses mc grub2)
+		misc_projects=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses grub2)
 
 		xfce_projects=(exo-utils libexo-2-0 libexo-2-dev libexo-common gir1.2-garcon-1.0 \
 		gir1.2-garcongtk-1.0 libgarcon-1-0 libgarcon-1-0-dev libgarcon-1-dev \
@@ -153,7 +153,7 @@ case "$1" in
 		xfce4-places-plugin xfce4-power-manager xfce4-power-manager-data \
 		xfce4-power-manager-plugins xfce4-pulseaudio-plugin xfce4-screenshooter \
 		xfce4-sensors-plugin xfce4-session xfce4-helpers xfce4-settings \
-		xfce4-smartbookmark-plugin xfce4-systemload-plugin xfce4-taskmanager xfce4-terminal \
+		xfce4-smartbookmark-plugin xfce4-systemload-plugin xfce4-taskmanager \
 		xfce4-timer-plugin xfce4-verve-plugin xfce4-wavelan-plugin xfce4-weather-plugin \
 		xfce4-whiskermenu-plugin xfce4-xkb-plugin gir1.2-xfconf-0 libxfconf-0-3 \
 		libxfconf-0-dev xfconf xfdesktop4 xfdesktop4-data xfwm4)
