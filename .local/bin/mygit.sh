@@ -118,8 +118,7 @@ case "$1" in
 	# 1 - means https://salsa.debian.org/public my favorite projects
 
 	'clone0')
-		projects=(notes dotfiles-debian chroot-deb-builder iikrllx \
-		typp quake3-terminal-theme glibc-with-shred linux-insides-ru binout)
+		projects=(notes dotfiles-debian chroot-deb-builder)
 
 		for name in ${projects[*]}; do
 			if [ ! -d "$name" ]; then
