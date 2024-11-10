@@ -129,7 +129,8 @@ case "$1" in
 	;;
 
 	'clone1')
-		misc_projects=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses grub2)
+		misc_projects=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses \
+		grub2 telegram-desktop)
 
 		xfce_projects=(exo-utils libexo-2-0 libexo-2-dev libexo-common gir1.2-garcon-1.0 \
 		gir1.2-garcongtk-1.0 libgarcon-1-0 libgarcon-1-0-dev libgarcon-1-dev \

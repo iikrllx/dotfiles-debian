@@ -4,7 +4,8 @@
 # My favorite Debian packages here (for maintenance work).
 #
 
-misc_packages=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses grub2)
+misc_packages=(mc bash tmux vim strace xterm xfce4-terminal tig git aptitude ncurses \
+grub2 telegram-desktop)
 
 # Debian Xfce Maintainers
 xfce_packages=(\
