@@ -118,7 +118,7 @@ case "$1" in
 	# 1 - means https://salsa.debian.org/public my favorite projects
 
 	'clone0')
-		projects=(notes dotfiles-debian chroot-deb-builder)
+		projects=(notes dotfiles-debian chroot-deb-builder ioquake3-linux-install)
 
 		for name in ${projects[*]}; do
 			if [ ! -d "$name" ]; then
