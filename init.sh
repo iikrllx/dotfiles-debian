@@ -167,7 +167,7 @@ for arg in "$@"; do
 		;;
 
 		"--install-packages")
-			main=(nano mousepad vim vim-gtk3 gdb tmux mc git tig neomutt newsboat \
+			main=(nano mousepad vim vim-gtk3 gdb tmux mc git git-lfs tig neomutt newsboat \
 			galculator gparted gcc make strace xsel ripgrep bash-completion pkg-config \
 			valgrind locales sudo ssh sshpass systemd-coredump moreutils coreutils \
 			binutils diffutils mawk gawk perl perl-base psmisc dialog whiptail \
