@@ -17,7 +17,7 @@ set incsearch             " incrementally highlight matching
 set ignorecase            " ignore capital letters during search
 set noswapfile            " disable .swap files
 set background=dark       " dark or light
-set textwidth=100         " max 100 characters line
+set textwidth=80          " max 80 characters line
 set encoding=utf-8        " set the encoding to UTF-8
 
 " list all vim color schemes :colorscheme <Tab>
