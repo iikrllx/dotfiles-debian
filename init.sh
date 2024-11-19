@@ -187,7 +187,7 @@ for arg in "$@"; do
 			fonts-ibm-plex)
 
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
-			audacious cowsay oneko)
+			audacious cowsay oneko simplescreenrecorder)
 
 			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
 
