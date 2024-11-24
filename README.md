@@ -98,15 +98,15 @@ remove 'rc' (removed but not purged) packages plus debs autoremove and autoclean
 wrapper script for 'md5sum' utility. actual to use together with crontab.<br/>
 
 ## I like these fonts
-I use these fonts from time to time in terminal.<br/>
+I use these fonts from time to time in my terminal.<br/>
 These fonts are installed using [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
 
 ```
-glass tty vt220 bold
-px ibm ega8 regular
-terminus medium
-terminus bold
-unifont regular
-unifont bold
-hack regular
+> glass tty vt220 bold
+> px ibm ega8 regular
+> unifont regular
+> unifont bold
+> terminus medium
+> terminus bold
+> hack regular
 ```
