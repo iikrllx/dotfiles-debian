@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
-# Executes specified Git commands across all managed projects, such as 'clone', 'pull' or 'status'
-# (simple git operations), for streamlined multi-repo management.
+# Executes specified Git commands across all managed projects,
+# such as 'clone', 'pull' or 'status' (simple git operations),
+# for streamlined multi-repo management.
 #
 
 myenv="$HOME/git/myenv"

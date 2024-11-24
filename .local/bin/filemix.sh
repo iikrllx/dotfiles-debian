@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# Renames all files of a specified format in the current directory to unique random names.
-# Need to specify the file format ("txt", "jpg", etc.).
+# Renames all files of a specified format in the current directory to unique
+# random names. Need to specify the file format ("txt", "jpg", etc.).
 #
 
 generate_random_string()

@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# Creates a randomly named Shell script with a template structure, including argument parsing and
-# help functionality, requiring sudo to execute.
+# Creates a randomly named Shell script with a template structure,
+# including argument parsing and help functionality, requiring sudo to execute.
 #
 
 uniq_name=$(echo $(cat /dev/urandom | tr -dc 'a-z0-9' | head -c 8).sh)

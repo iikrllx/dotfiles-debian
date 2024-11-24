@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# Generates a random alphanumeric string of a specified length.
+# Generates a random alphanumeric string of a specified length
+# and echo it to the stdout.
 #
 
 if [ ! -z "$1" ]; then
