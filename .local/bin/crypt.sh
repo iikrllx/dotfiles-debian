@@ -36,7 +36,7 @@ case "$1" in
 		exit 1
 	fi
 
-	randf=".$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 8)"
+	randf=".$(cat /dev/urandom | tr -dc 'a-z0-9' | head -c 8)"
 
 	while true; do
 		if file "$2" | grep -E "openssl|salted"; then
