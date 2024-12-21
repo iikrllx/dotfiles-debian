@@ -7,7 +7,7 @@ This is my Debian dotfiles (backup). Configuration files, useful scripts and ali
 notes, hotkeys, various development tools, color schemes, etc. There are not only dotfiles here, but also
 some normal files that can be in ```/etc```.
 
-I'm lazy, so there's a script [init.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+I'm lazy, so there's a script [init](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
 which initialize/configure my work environment automatically. I am using the latest stable version
 of Debian with Xfce.
 
@@ -40,7 +40,7 @@ Another one (last screenshot):
 - <strong>Text-mode interface for Git:</strong> ```Tig```
 - <strong>Mail Client:</strong> ```Neomutt```
 - <strong>RSS Feed Reader:</strong> ```Newsboat```
-- <strong>Additional packages:</strong> [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+- <strong>Additional packages:</strong> [./init --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
 
 ## Installation
 - Install Debian with Xfce.
@@ -53,33 +53,33 @@ $ cd dotfiles-debian
 
 Usage information:
 ```
-$ ./init.sh --help
+$ ./init --help
 ```
 **Attention**. Be careful when running this script on your main machine, it does not create backup dotfiles and may ~~erase~~ your current working environment.
 
 Clean home, update ```/etc/apt/sources.list```, install required packages:
 ```
-$ ./init.sh --clean-home --sources.list --install-packages
+$ ./init --clean-home --sources.list --install-packages
 ```
 
 Configure $HOME environment:
 ```
-$ ./init.sh --bashrc --bash-completion --local-bin --local-share
+$ ./init --bashrc --bash-completion --local-bin --local-share
 ```
 
 Configure Xfce environment and colors:
 ```
-$ ./init.sh --xfce --xfce-hotkeys --xfce-terminal --dircolors
+$ ./init --xfce --xfce-hotkeys --xfce-terminal --dircolors
 ```
 
 Text editors, terminal multiplexer, debuger, file navigation:
 ```
-$ ./init.sh --vim --tmux --mc --mousepad --gdb
+$ ./init --vim --tmux --mc --mousepad --gdb
 ```
 
 Mail client, RSS feed reader:
 ```
-$ ./init.sh --neomutt --newsboat
+$ ./init --neomutt --newsboat
 ```
 
 The script has other useful options, but I think you won't need it.
@@ -99,7 +99,7 @@ wrapper script for 'md5sum' utility. actual to use together with crontab.<br/>
 
 ## I like these fonts
 I use these fonts from time to time in my terminal.<br/>
-These fonts are installed using [./init.sh --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init.sh)
+These fonts are installed using [./init --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
 
 ```
 > glass tty vt220 bold
