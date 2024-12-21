@@ -53,7 +53,7 @@ git_action()
 	fi
 
 	for dir in ${current_dirs[*]}; do
-		echo -e "\e[96m*** ----- $dir ----- ***\e[0m"
+		echo -e "\e[96m*** ---- $dir ---- ***\e[0m"
 		cd "$dir"
 
 		if [ "$option" == "pull" ]; then
