@@ -180,8 +180,8 @@ for arg in "$@"; do
 			quilt debconf-utils adequate piuparts licensecheck reportbug \
 			how-can-i-help equivs debconf aptitude duck blhc gobject-introspection)
 
-			doc=(man-db mandoc manpages manpages-dev manpages-posix manpages-posix-dev \
-			linux-doc gcc-doc gcc-base-doc info)
+			doc=(man-db mandoc manpages manpages-dev manpages-ru manpages-ru-dev \
+			manpages-posix manpages-posix-dev linux-doc gcc-doc gcc-base-doc info)
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty \
 			fonts-ibm-plex)
