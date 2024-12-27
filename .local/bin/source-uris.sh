@@ -25,6 +25,6 @@ if [ ! -z "$1" ]; then
 		exit 1
 	fi
 else
-	>&2 echo "usage: $ $(basename $0) <command>"
+	>&2 echo "usage: $ $(basename $0) <command>|<path>"
 	exit 1
 fi
