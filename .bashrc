@@ -43,6 +43,16 @@ export TERMINAL='/usr/bin/xfce4-terminal'
 export DEBEMAIL=krekhov.dev@gmail.com
 export DEBFULLNAME="Kirill Rekhov"
 
+# push to notes
+# https://github.com/iikrllx/notes
+# i'm not concerned about commit descriptions in this project
+pn()
+{
+    git add .
+    git commit -m "$(date -R)"
+    git push
+}
+
 # function for my .vimrc trick (vnoremap)
 # (vim -> visual mode -> ctrl + c -> ~/vbuf)
 # ~/vbuf file has saved lines from the clipboard
