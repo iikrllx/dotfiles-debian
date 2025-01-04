@@ -243,6 +243,7 @@ for arg in "$@"; do
 			mark_e_file ~/.profile
 
 			cp -v ./.vv ~/
+			cp -v ./.dput.cf ~/
 		;;
 
 		"--bash-completion")
