@@ -27,6 +27,7 @@ alias brc='vim ~/.bashrc'
 alias rb='sudo reboot'
 alias sdn='sudo shutdown -h now'
 alias cc='xsel -p -c; xsel -b -c' # clear primary/clipboard selections
+alias rcd='d=$(rnd-stdout.sh 8); mkdir $d; cd $d'
 alias grep='grep --color'
 alias diff='diff --color'
 alias rm='rm -v'
@@ -42,16 +43,6 @@ export BROWSER='/usr/bin/firefox'
 export TERMINAL='/usr/bin/xfce4-terminal'
 export DEBEMAIL=krekhov.dev@gmail.com
 export DEBFULLNAME="Kirill Rekhov"
-
-# push to notes
-# https://github.com/iikrllx/notes
-# i'm not concerned about commit descriptions in this project
-pn()
-{
-    git add .
-    git commit -m "$(date -R)"
-    git push
-}
 
 # function for my .vimrc trick (vnoremap)
 # (vim -> visual mode -> ctrl + c -> ~/vbuf)
