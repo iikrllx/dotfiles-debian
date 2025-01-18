@@ -94,10 +94,12 @@ manages all my git projects (simple git operations).<br/>
 encrypt/decrypt regular file with sensitive information (using a password).<br/>
 [deb-clean.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/deb-clean.sh) -
 remove 'rc' (removed but not purged) packages plus debs autoremove and autoclean.<br/>
-[checksums.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/checksums.sh) -
-wrapper script for 'md5sum' utility. actual to use together with crontab.<br/>
+[apt-recent-installs.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/apt-recent-installs.sh) -
+parses ```/var/log/apt/history.log``` to extract installation dates and package lists.<br/>
+[source-uris.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/source-uris.sh) -
+get source uris.<br/>
 
-## I like these fonts
+## My favorite fonts
 I use these fonts from time to time in my terminal.<br/>
 These fonts are installed using [./init --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
 
