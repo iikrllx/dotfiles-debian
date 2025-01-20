@@ -27,7 +27,7 @@ alias brc='vim ~/.bashrc'
 alias rb='sudo reboot'
 alias sdn='sudo shutdown -h now'
 alias cc='xsel -p -c; xsel -b -c' # clear primary/clipboard selections
-alias rcd='d=$(rnd-stdout.sh 8); mkdir $d; cd $d'
+alias rcd='cd $(mktemp -d)'
 alias grep='grep --color'
 alias diff='diff --color'
 alias rm='rm -v'
