@@ -189,7 +189,9 @@ for arg in "$@"; do
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
 			audacious cowsay oneko simplescreenrecorder)
 
-			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}")
+			virt=(qemu-kvm qemu-system qemu-utils)
+
+			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}" "${virt[*]}")
 
 			bold_message "Install useful packages"
 			sudo apt-get update
