@@ -31,7 +31,7 @@ Another one (last screenshot):
 - <strong>Browser:</strong> ```Firefox```
 - <strong>File Manager:</strong> ```Thunar```
 - <strong>Text Editor:</strong> ```Vim```, ```Mousepad```
-- <strong>Terminal File Navigation:</strong> ```Midnight Commander```
+- <strong>Terminal File Navigation:</strong> ```Midnight Commander```, ```Vifm```
 - <strong>Terminal Emulator:</strong> ```xfce4-terminal```
 - <strong>Terminal Multiplexer:</strong> ```Tmux```
 - <strong>Compiler:</strong> ```GCC```
@@ -74,7 +74,7 @@ $ ./init --xfce --xfce-hotkeys --xfce-terminal --dircolors
 
 Text editors, terminal multiplexer, debuger, file navigation:
 ```
-$ ./init --vim --tmux --mc --mousepad --gdb
+$ ./init --vim --vifm --tmux --mc --mousepad --gdb
 ```
 
 Mail client, RSS feed reader:

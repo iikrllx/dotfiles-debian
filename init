@@ -96,6 +96,8 @@ Usage: $(basename $0) [option]
 
   --vim                  vim text editor installation with plugins
 
+  --vifm                 vifm installation
+
   --mousepad             mousepad text editor installation
 
   --gdb                  gdb debugger installation
@@ -364,6 +366,16 @@ for arg in "$@"; do
 				vim +PlugClean +PlugInstall +q +q
 			else
 				>&2 echo "Please, install 'vim' package"
+				exit 1
+			fi
+		;;
+
+		"--vifm")
+			bold_message "Vifm installation"
+			if check_package vifm; then
+				sudo cp -v ./root/etc/vifm/vifmrc /etc/vifm
+			else
+				>&2 echo "Please, install 'vifm' package"
 				exit 1
 			fi
 		;;
