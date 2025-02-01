@@ -82,7 +82,7 @@ Mail client, RSS feed reader:
 $ ./init --neomutt --newsboat
 ```
 
-The script has other useful options, but I think you won't need it.
+The script has other options, but I think you won't need it.
 
 ## Scripts
 Location: [.local/bin/](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin)
