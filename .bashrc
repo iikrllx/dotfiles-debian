@@ -1,10 +1,11 @@
 # aliases
 alias rmf='shred -uzn 4'
-alias rmd='wipe -rfqQ -s 8'
 alias daterc='date -R | xsel -b -i' # input date (RFC 5322) to clipboard (for changelog)
 alias _date='date +"%d/%m/%Y - %H:%M:%S"' # simple format
-alias ls='ls -1l --group-directories-first -hN --color'
-alias la='ls -A --color'
+alias ls='ls -1 --group-directories-first -N --color=auto'
+alias ll='ls -1l --group-directories-first -hN --color=auto'
+alias la='ls -A --color=auto'
+alias lla='ls -lA --group-directories-first -hN --color=auto'
 alias c='cd ~/'
 alias d='cd ~/Downloads'
 alias s='cd ~/sources'
@@ -16,8 +17,8 @@ alias pb='cd /var/cache/pbuilder'
 alias mm='cd ~/main && vim -c NERDTree'
 alias m='cd ~/main'
 alias v='vim'
+alias vf='vifm'
 alias a='sudo aptitude'
-alias n='neomutt'
 alias nb='newsboat'
 alias tos='cd ~/main/.trash && ls -a'
 alias tod='cd ~/main/self && vim todo/head'
@@ -28,8 +29,8 @@ alias rb='sudo reboot'
 alias sdn='sudo shutdown -h now'
 alias cc='xsel -p -c; xsel -b -c' # clear primary/clipboard selections
 alias rcd='cd $(mktemp -d)'
-alias grep='grep --color'
-alias diff='diff --color'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias rm='rm -v'
 alias cp='cp -vi'
 alias mv='mv -vi'
@@ -52,7 +53,7 @@ vb()
     [ -s ~/vbuf ] && vim ~/vbuf || echo $?
 }
 
-# touch file with verbose mode =)
+# touch file with verbose mode
 vtouch()
 {
     for i do
