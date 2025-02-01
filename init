@@ -25,12 +25,12 @@ check_package()
 mark_start="# ----"
 mark_end="# ---- Don't write after this"
 
-mark_s_file()
+mark_start_file()
 {
 	echo -e "\n$mark_start\n" >> $1
 }
 
-mark_e_file()
+mark_end_file()
 {
 	echo -e "\n$mark_end" >> $1
 }
@@ -164,6 +164,7 @@ for arg in "$@"; do
 		"--sources.list")
 			bold_message "sources.list installation"
 			sudo cp -v ./root/etc/apt/sources.list /etc/apt/
+			sudo apt-get update
 		;;
 
 		"--install-packages")
@@ -173,7 +174,7 @@ for arg in "$@"; do
 			binutils diffutils mawk gawk perl perl-base psmisc dialog whiptail \
 			exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file python-pip \
 			python3-pip ca-certificates openssl gpg dnsutils traceroute whois tcpdump \
-			nmap wget curl netcat net-tools dirmngr nfs-common gettext shc tree lsof)
+			nmap wget curl netcat net-tools dirmngr nfs-common gettext shc tree lsof vifm)
 
 			deb=(apt-file dpkg-dev devscripts lintian  cdbs debootstrap pbuilder \
 			dconf-cli automake autoconf dh-make debhelper build-essential autotools-dev \
@@ -235,17 +236,16 @@ for arg in "$@"; do
 		"--bashrc")
 			bold_message "Bash read extra rules installation"
 			remove_marked_lines ~/.bashrc
-			mark_s_file ~/.bashrc
+			mark_start_file ~/.bashrc
 			cat ./.bashrc >> ~/.bashrc
-			mark_e_file ~/.bashrc
+			mark_end_file ~/.bashrc
 
 			remove_marked_lines ~/.profile
-			mark_s_file ~/.profile
+			mark_start_file ~/.profile
 			cat ./.profile >> ~/.profile
-			mark_e_file ~/.profile
+			mark_end_file ~/.profile
 
 			cp -v ./.vv ~/
-			cp -v ./.dput.cf ~/
 		;;
 
 		"--bash-completion")
@@ -391,9 +391,9 @@ for arg in "$@"; do
 				fi
 
 				remove_marked_lines ~/.gdbinit
-				mark_s_file ~/.gdbinit
+				mark_start_file ~/.gdbinit
 				cat ./.gdbinit >> ~/.gdbinit
-				mark_e_file ~/.gdbinit
+				mark_end_file ~/.gdbinit
 			else
 				>&2 echo "Please, install 'gdb' package"
 				exit 1
