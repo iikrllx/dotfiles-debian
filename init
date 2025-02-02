@@ -375,6 +375,7 @@ for arg in "$@"; do
 			bold_message "Vifm installation"
 			if check_package vifm; then
 				sudo cp -v ./root/etc/vifm/vifmrc /etc/vifm
+				sudo chmod 644 /etc/vifm/vifmrc
 			else
 				>&2 echo "Please, install 'vifm' package"
 				exit 1

@@ -503,6 +503,15 @@ nnoremap <c-u> <c-w>x
 nnoremap q :q<cr>
 nnoremap r cw<c-a>
 nnoremap gh :cd<cr>
+nnoremap gd :cd ~/Downloads<cr>
+nnoremap gs :cd ~/sources<cr>
+nnoremap ggm :cd ~/git/myenv<cr>
+nnoremap ggs :cd ~/git/salsa<cr>
+nnoremap ggw :cd ~/git/work<cr>
+nnoremap ggn :cd ~/git/myenv/notes<cr>
+nnoremap gp :cd /var/cache/pbuilder<cr>
+nnoremap gl :cd ~/.local/bin<cr>
+nnoremap gm :cd ~/main<cr>
 nnoremap mv :move<cr>
 nnoremap md :mkdir<space>
 nnoremap mf :touch<space>
