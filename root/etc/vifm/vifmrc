@@ -500,6 +500,7 @@ nnoremap <c-u> <c-w>x
 
 " ----
 
+nnoremap - :cd -<cr>
 nnoremap q :q<cr>
 nnoremap r cw<c-a>
 nnoremap gh :cd<cr>
