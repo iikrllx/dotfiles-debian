@@ -191,7 +191,7 @@ for arg in "$@"; do
 
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
 			audacious cowsay oneko simplescreenrecorder firefox-esr firefox-esr-l10n-ru \
-			thunderbird thunderbird-l10n-ru)
+			thunderbird thunderbird-l10n-ru birdtray)
 
 			virt=(qemu-kvm qemu-system qemu-utils)
 
