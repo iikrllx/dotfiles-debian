@@ -1,5 +1,6 @@
-# Deprecated for me, now I use Thunderbird with Gmail
-# I couldn't configure Neomutt with Gmail
+# Deprecated for me, now I use Gmail in browser
+# I couldn't configure Neomutt with Gmail without two-factor authentication
+# I can't use two-factor authentication in my country
 
 set realname = "Kirill Rekhov"
 set from = "krekhov.dev@mail.ru"
