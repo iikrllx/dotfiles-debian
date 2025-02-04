@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# Automates the process of writing a message, signing it with GPG,
-# and copying the signed message to the clipboard.
+# Automates the process of writing a message, signing it with GPG, and copying
+# the signed message to the clipboard.
 #
 
 set -e
