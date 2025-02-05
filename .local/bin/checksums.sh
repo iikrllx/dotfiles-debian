@@ -3,8 +3,8 @@
 # Wrapper script for 'md5sum' utility.
 # Actual to use together with crontab.
 # For example:
-# ./script.sh -b (12:00)
-# ./script.sh -a (00:00)
+# ./script.sh --before (12:00)
+# ./script.sh --after (00:00)
 # Dotfiles with failed sums: /home/$SUDO_USER/.$(date +"%d-%m-%Y-%H:%M:%S")
 #
 
@@ -30,9 +30,9 @@ Usage: $(basename $0) [option]
 Wrapper script for 'md5sum' utility.
 
   [option]
-  -b            compute MD5 sums
-  -a            check MD5 sums
-  -h            show this help and exit
+  -b, --before    compute MD5 sums
+  -a, --after     check MD5 sums
+  -h              show this help and exit
 
 EOF
 
@@ -44,8 +44,8 @@ tmpf="/tmp/sums"
 failed="/home/$SUDO_USER/.$(date +'%d-%m-%Y-%H:%M:%S')"
 
 case "$1" in
-# before
-'-b')
+
+'-b'|'--before')
 	rm "$tmpf" >/dev/null 2>&1
 	for p in /etc /usr/bin /usr/sbin /usr/lib /boot; do
 		find "$p" -type f | while read -r f; do
@@ -53,8 +53,8 @@ case "$1" in
 		done
 	done
 	;;
-# after
-'-a')
+
+'-a'|'--after')
 	if [ -s "$tmpf" ]; then
 		md5sum -c --quiet "$tmpf" > "$failed" 2>/dev/null
 		[ ! -s "$failed" ] && rm "$failed" || chown "$SUDO_USER:" "$failed"
@@ -71,4 +71,5 @@ case "$1" in
 *)
 	usage 1
 	;;
+
 esac

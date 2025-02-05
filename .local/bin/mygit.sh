@@ -42,7 +42,7 @@ exit 0
 fi
 }
 
-git_action()
+git_command()
 {
 	path="$1" option="$2"
 	current_dirs="$(dirname $(find $path -type d -name '.git') 2>/dev/null)"
@@ -178,10 +178,10 @@ case "$1" in
 		clone_salsa "trans" "${trans_projects[*]}"
 	;;
 
-	'pull0') git_action "$myenv" "pull" ;;
-	'pull1') git_action "$salsa" "pull" ;;
-	'status0') git_action "$myenv" "status" ;;
-	'status1') git_action "$salsa" "status" ;;
+	'pull0') git_command "$myenv" "pull" ;;
+	'pull1') git_command "$salsa" "pull" ;;
+	'status0') git_command "$myenv" "status" ;;
+	'status1') git_command "$salsa" "status" ;;
 	'help') usage 0 ;;
 
 	*) usage 1 ;;
