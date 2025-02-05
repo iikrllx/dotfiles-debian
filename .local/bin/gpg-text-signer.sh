@@ -14,8 +14,8 @@ Usage: $(basename $0) [option]
 Automates message writing and GPG signing.
 
   [option]
-  -c, --clearsign
-  -d, --detachsign
+  -c, --clearsign     clear-sign and copy
+  -d, --detachsign    detach-sign and copy
   -h                  show this help and exit
 
 EOF
