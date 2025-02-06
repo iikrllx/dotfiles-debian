@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 #
-# Checks the availability of URLs extracted from a specified file, reporting the
-# status of each link. Checks response http|https links from file.
+# Check the availability of URLs extracted from a specified file, reporting the
+# status of each link. Check response 'http'/'https' links from file.
 #
 
 if [ -s "$1" ] ; then
-	list=$(grep -o 'https\?://[^ ]*' "$1" | sed 's/[)*.,:;(]*$//')
+	list=$(grep -o 'https\?://[^ ]*' "$1" | sed 's/[)>*.,:;(]*$//')
 	if [ ! -z "$list" ]; then
 		for l in ${list[*]}; do
-			#wget -O/dev/null -q "$l"
 			curl -IsSf "$l" >/dev/null
 			echo "$l - $?"
 		done

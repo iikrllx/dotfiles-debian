@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Script parses the /var/log/apt/history.log file to extract and display
+# Parse the /var/log/apt/history.log file to extract and display
 # installation dates and package lists for each install command executed.
 #
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Creates a randomly named Bash script with a template structure, including
+# Create a randomly named Bash script with a template structure, including
 # argument parsing and help functionality, requiring sudo to execute.
 #
 

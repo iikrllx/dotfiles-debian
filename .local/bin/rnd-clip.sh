@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Generates a random alphanumeric string of a specified length
+# Generate a random alphanumeric string of a specified length
 # and copies it to the clipboard.
 #
 

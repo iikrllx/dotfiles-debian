@@ -44,7 +44,6 @@ tmpf="/tmp/sums"
 failed="/home/$SUDO_USER/.$(date +'%d-%m-%Y-%H:%M:%S')"
 
 case "$1" in
-
 '-b'|'--before')
 	rm "$tmpf" >/dev/null 2>&1
 	for p in /etc /usr/bin /usr/sbin /usr/lib /boot; do
@@ -71,5 +70,4 @@ case "$1" in
 *)
 	usage 1
 	;;
-
 esac

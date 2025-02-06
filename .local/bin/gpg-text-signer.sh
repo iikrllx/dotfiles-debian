@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# A script that automates the process of writing a message, signing it with GPG.
+# Automate the process of writing a message, signing it with GPG.
 #
 
 usage()
@@ -11,7 +11,7 @@ if [ $1 -eq 1 ]; then
 else
 cat << EOF
 Usage: $(basename $0) [option]
-Automates message writing and GPG signing.
+Automate message writing and GPG signing.
 
   [option]
   -c, --clearsign     clear-sign and copy
@@ -40,7 +40,6 @@ vim $text
 }
 
 case "$1" in
-
 '-c'|'--clearsign')
 	message_template
 	gpg --clearsign $text
@@ -66,5 +65,4 @@ case "$1" in
 *)
 	usage 1
 	;;
-
 esac

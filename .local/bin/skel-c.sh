@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Generates a C source file with a random name containing a basic program
+# Generate a C source file with a random name containing a basic program
 # structure and a GDB script to start debugging from the main function.
 #
 

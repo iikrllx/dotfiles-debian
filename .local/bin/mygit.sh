@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Executes specified Git commands across all managed projects, such as 'clone',
+# Execute specified Git commands across all managed projects, such as 'clone',
 # 'pull' or 'status' (simple git operations), for streamlined multi-repo
 # management.
 #
@@ -179,9 +179,13 @@ case "$1" in
 	;;
 
 	'pull0') git_command "$myenv" "pull" ;;
+
 	'pull1') git_command "$salsa" "pull" ;;
+
 	'status0') git_command "$myenv" "status" ;;
+
 	'status1') git_command "$salsa" "status" ;;
+
 	'help') usage 0 ;;
 
 	*) usage 1 ;;
