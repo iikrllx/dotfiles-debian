@@ -5,7 +5,7 @@
 #
 
 if [ -s "$1" ] ; then
-	list=$(grep -o 'https\?://[^ ]*' "$1" | sed 's/[)>*.,:;(]*$//')
+	list=$(grep -o 'https\?://[^ ]*' "$1" | sed "s/[)>*.,:;\"']*$//")
 	if [ ! -z "$list" ]; then
 		for l in ${list[*]}; do
 			curl -IsSf "$l" >/dev/null
