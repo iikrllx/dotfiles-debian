@@ -28,6 +28,7 @@ alias a='sudo aptitude'
 alias nb='newsboat'
 alias rb='sudo reboot'
 alias sdn='sudo shutdown -h now'
+alias sl='sudo vim /etc/apt/sources.list'
 alias cc='xsel -p -c; xsel -b -c' # clear primary/clipboard selections
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
