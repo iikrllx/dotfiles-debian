@@ -74,8 +74,8 @@ Usage: $(basename $0) [option]
   --clean-home           cleanup home directory
                          configure user-dirs.*
 
-  --bashrc               ~/.bashrc, ~/.profile extra rules installation
-                         append rules to the current content of ~/.bashrc, ~/.profile
+  --bashrc               ~/.bashrc extra rules installation
+                         append rules to the current content of ~/.bashrc
 
   --bash-completion      enable bash completion
 
@@ -190,7 +190,8 @@ for arg in "$@"; do
 			fonts-ibm-plex)
 
 			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
-			audacious cowsay oneko simplescreenrecorder firefox-esr firefox-esr-l10n-ru)
+			audacious oneko cowsay toilet figlet simplescreenrecorder \
+			firefox-esr firefox-esr-l10n-ru)
 
 			virt=(qemu-kvm qemu-system qemu-utils)
 
@@ -241,13 +242,6 @@ for arg in "$@"; do
 			mark_start_file ~/.bashrc
 			cat ./.bashrc >> ~/.bashrc
 			mark_end_file ~/.bashrc
-
-			remove_marked_lines ~/.profile
-			mark_start_file ~/.profile
-			cat ./.profile >> ~/.profile
-			mark_end_file ~/.profile
-
-			cp -v ./.vv ~/
 		;;
 
 		"--bash-completion")

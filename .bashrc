@@ -112,3 +112,5 @@ PS1='\[\e[0;33m\]\A|\[\e[0;32m\]\h:\[\e[0;36m\]\w \[\033[0;34m\]\u\[\e[0m\] \$ '
 if command -v tmux >/dev/null; then
     [ -z "$TMUX" ] && tmux
 fi
+
+figlet DEBIAN
