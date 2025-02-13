@@ -5,6 +5,7 @@
 # I'm not concerned about commit descriptions in this project.
 #
 
+gitstatus=$(git status -s)
 git add .
-git commit -m "$(date -R)"
+git commit -m "$gitstatus"
 git push
