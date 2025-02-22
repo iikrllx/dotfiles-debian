@@ -6,6 +6,7 @@
 #
 
 gitstatus=$(git status -s)
+tree > README
 git add .
 git commit -m "$gitstatus"
 git push
