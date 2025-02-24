@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# https://www.debian.org/devel/wnpp/requested_byage
+# Processes Debian's WNPP (Work-Needing and Prospective Packages) RFP (Request
+# for Package) bug reports. It extracts links to GitHub projects mentioned in
+# these bug reports.
+#
 
 a=$(mktemp)
 b=$(mktemp)
