@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Push to notes:
-# https://github.com/iikrllx/notes
+# https://github.com/krekhovx/notes
 # I'm not concerned about commit descriptions in this project.
 #
 

@@ -115,7 +115,7 @@ clone_salsa()
 }
 
 case "$1" in
-	# 0 - means https://github.com/iikrllx my projects
+	# 0 - means https://github.com/krekhovx my projects
 	# 1 - means https://salsa.debian.org/public my favorite projects
 
 	'clone0')
@@ -123,7 +123,7 @@ case "$1" in
 
 		for name in ${projects[*]}; do
 			if [ ! -d "$name" ]; then
-				git clone "git@github.com:iikrllx/$name"
+				git clone "git@github.com:krekhovx/$name"
 				echo
 			fi
 		done

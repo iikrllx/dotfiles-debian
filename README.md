@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/iikrllx/dotfiles-debian/blob/master/images/logo-color.png">
+<img src="https://github.com/krekhovx/dotfiles-debian/blob/master/images/logo-color.png">
 </div>
 
 ## My Debian Dotfiles
@@ -7,7 +7,7 @@ This is my Debian dotfiles (backup). Configuration files, useful scripts and ali
 notes, hotkeys, various development tools, color schemes, etc. There are not only dotfiles here, but also
 some normal files that can be in ```/etc```.
 
-I'm lazy, so there's a script [init](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
+I'm lazy, so there's a script [init](https://github.com/krekhovx/dotfiles-debian/blob/master/init)
 which initialize/configure my work environment automatically. I am using the latest stable version
 of Debian with Xfce.
 
@@ -40,13 +40,13 @@ Another one (last screenshot):
 - <strong>Text-mode interface for Git:</strong> ```Tig```
 - <strong>Mail Client:</strong> ```Neomutt```
 - <strong>RSS Feed Reader:</strong> ```Newsboat```
-- <strong>Additional packages:</strong> [./init --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
+- <strong>Additional packages:</strong> [./init --install-packages](https://github.com/krekhovx/dotfiles-debian/blob/master/init)
 
 ## Installation
 - Install Debian with Xfce.
 - Clone repo:
 ```
-$ git clone https://github.com/iikrllx/dotfiles-debian.git
+$ git clone https://github.com/krekhovx/dotfiles-debian.git
 $ cd dotfiles-debian
 ```
 - Install the environment using a script:
@@ -85,23 +85,23 @@ $ ./init --neomutt --newsboat
 The script has other options, but I think you won't need it.
 
 ## Scripts
-Location: [.local/bin/](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin)
+Location: [.local/bin/](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin)
 
 Few examples:<br/>
-[mygit.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
+[mygit.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
 manages all my git projects (simple git operations).<br/>
-[crypt.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
+[crypt.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
 encrypt/decrypt regular file with sensitive information (using a password).<br/>
-[deb-clean.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/deb-clean.sh) -
+[deb-clean.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/deb-clean.sh) -
 remove 'rc' (removed but not purged) packages plus debs autoremove and autoclean.<br/>
-[apt-recent-installs.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/apt-recent-installs.sh) -
+[apt-recent-installs.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/apt-recent-installs.sh) -
 parses ```/var/log/apt/history.log``` to extract installation dates and package lists.<br/>
-[source-uris.sh](https://github.com/iikrllx/dotfiles-debian/blob/master/.local/bin/source-uris.sh) -
+[source-uris.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/source-uris.sh) -
 get source uris.<br/>
 
 ## My favorite fonts
 I use these fonts from time to time in my terminal.<br/>
-These fonts are installed using [./init --install-packages](https://github.com/iikrllx/dotfiles-debian/blob/master/init)
+These fonts are installed using [./init --install-packages](https://github.com/krekhovx/dotfiles-debian/blob/master/init)
 
 ```
 > glass tty vt220 bold
