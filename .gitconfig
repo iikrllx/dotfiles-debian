@@ -1,3 +1,7 @@
 [user]
 	email = krekhov.dev@gmail.com
 	name = Kirill Rekhov
+	signingkey = 5F2C5905519CE0A0
+
+[commit]
+	gpgSign = true
