@@ -174,9 +174,9 @@ for arg in "$@"; do
 			galculator gparted gcc make strace xsel ripgrep bash-completion pkg-config \
 			valgrind locales sudo ssh sshpass systemd-coredump moreutils coreutils \
 			binutils diffutils mawk gawk perl perl-base psmisc dialog whiptail \
-			exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file python-pip \
-			python3-pip ca-certificates openssl gpg dnsutils traceroute whois tcpdump \
-			nmap wget curl netcat net-tools dirmngr nfs-common gettext shc tree lsof vifm)
+			exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file python3-pip \
+			ca-certificates openssl gpg dnsutils traceroute whois tcpdump nmap wget curl \
+			netcat-traditional net-tools dirmngr nfs-common gettext shc tree lsof vifm)
 
 			deb=(apt-file dpkg-dev devscripts lintian  cdbs debootstrap pbuilder \
 			dconf-cli automake autoconf dh-make debhelper build-essential autotools-dev \
