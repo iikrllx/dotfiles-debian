@@ -14,8 +14,8 @@ Usage: $(basename $0) [option]
 Launch QEMU with specified options.
 
   [option]
-  -qc, --qemu-cdrom      launch QEMU using a specified CD-ROM ISO.
-  -qd, --qemu-tempdisk   create a temporary disk and launch QEMU with it.
+  -qc, --qemu-cdrom      launch QEMU using a specified CD-ROM ISO
+  -qd, --qemu-tempdisk   create a temporary disk and launch QEMU with it
   -h                     show this help and exit
 
 EOF
