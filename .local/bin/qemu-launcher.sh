@@ -26,13 +26,13 @@ fi
 
 case "$1" in
 '-qc'|'--qemu-cdrom')
-	qemu-system-x86_64 -boot d -cdrom "$1" -m 2048
+	qemu-system-x86_64 -boot d -cdrom "$2" -m 2048
 	;;
 
 '-qd'|'--qemu-tempdisk')
 	f=$(mktemp)
 	qemu-img create -f qcow2 "/tmp/$f.img" 12G
-	qemu-system-x86_64 -boot d -cdrom "$1" -m 2048 -hda "/tmp/$f.img"
+	qemu-system-x86_64 -boot d -cdrom "$2" -m 2048 -hda "/tmp/$f.img"
 	;;
 
 '-h'|'--help')
