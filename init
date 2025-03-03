@@ -184,7 +184,7 @@ for arg in "$@"; do
 			how-can-i-help equivs debconf aptitude duck blhc gobject-introspection)
 
 			doc=(man-db mandoc manpages manpages-dev manpages-ru manpages-ru-dev \
-			manpages-posix manpages-posix-dev linux-doc gcc-doc gcc-base-doc info)
+			manpages-posix manpages-posix-dev linux-doc gcc-doc info)
 
 			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty \
 			fonts-ibm-plex)
@@ -193,7 +193,7 @@ for arg in "$@"; do
 			audacious oneko cowsay toilet figlet simplescreenrecorder \
 			firefox-esr firefox-esr-l10n-ru)
 
-			virt=(qemu-kvm qemu-system qemu-utils)
+			virt=(qemu-system qemu-utils)
 
 			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}" "${virt[*]}")
 
