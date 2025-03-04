@@ -7,7 +7,7 @@
 # Be careful when running this script on your main machine,
 # it does not create backup dotfiles and may erase your current working environment.
 #
-# After the $ ./init --xfce OR $ ./init --xfce-hotkeys
+# After the $ ./init --xfce OR $ ./init --xfce-hotkeys OR $ ./init --xinitrc
 # need to session restart.
 #
 
@@ -54,11 +54,8 @@ cat << EOF
 Usage: $(basename $0) [option]
 
   [option]
-  --ftp                  ftp server installation
-                         /etc/vsftpd.conf
-
   --initd                operations before shutdown/reboot
-                         /etc/init.d/clean-env script - amnesia
+                         /etc/init.d/clean-env script (amnesia)
 
   --hosts                hosts installation
                          /etc/hosts
@@ -71,8 +68,7 @@ Usage: $(basename $0) [option]
 
   --install-packages     install useful packages
 
-  --clean-home           cleanup home directory
-                         configure user-dirs.*
+  --clean-home           cleanup home directory, configure user-dirs.*
 
   --bashrc               ~/.bashrc extra rules installation
                          append rules to the current content of ~/.bashrc
@@ -84,8 +80,8 @@ Usage: $(basename $0) [option]
   --xfce                 full xfce installation (desktop session)
                          all ~/.config/xfce4/xfconf/xfce-perchannel-xml files
 
-  --xfce-hotkeys         xfce keyboard shortcuts installation
-                         configure only 'xfce4-keyboard-shortcuts.xml'
+  --xfce-hotkeys         xfce keyboard shortcuts installation, configure only
+                         ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
   --xfce-terminal        xfce terminal emulator installation (xfce4-terminal)
                          ~/.config/xfce4/terminal/terminalrc + colorschemes
@@ -114,6 +110,8 @@ Usage: $(basename $0) [option]
 
   --gitconfig            ~/.gitconfig installation
 
+  --xinitrc              ~/.xinitrc installation
+
   -h, --help             show this help and exit
 
 EOF
@@ -125,22 +123,6 @@ exit 0
 
 for arg in "$@"; do
         case "$arg" in
-		"--ftp")
-			bold_message "FTP server installation"
-			if check_package vsftpd; then
-				if [ ! -d /srv/ftp/upload ]; then
-					sudo mkdir /srv/ftp/upload
-					sudo chmod 777 /srv/ftp/upload
-				fi
-
-				sudo cp -v ./root/etc/vsftpd.conf /etc/vsftpd.conf
-				sudo systemctl restart vsftpd.service
-			else
-				>&2 echo "Please, install 'vsftpd' package"
-				exit 1
-			fi
-		;;
-
 		"--initd")
 			bold_message "init.d script for user home directory (amnesia)"
 			sudo cp -v ./root/etc/init.d/clean-env /etc/init.d
@@ -400,8 +382,8 @@ for arg in "$@"; do
 			if check_package vifm; then
 				mkdir ~/.config/vifm &>/dev/null | true
 				sudo mkdir /root/.config/vifm &>/dev/null | true
-				cp -v ./root/etc/vifm/vifmrc ~/.config/vifm/vifmrc
-				sudo cp -v ./root/etc/vifm/vifmrc /root/.config/vifm/vifmrc
+				cp -v ./.config/vifm/vifmrc ~/.config/vifm/vifmrc
+				sudo cp -v ./.config/vifm/vifmrc /root/.config/vifm/vifmrc
 			else
 				>&2 echo "Please, install 'vifm' package"
 				exit 1
@@ -411,7 +393,7 @@ for arg in "$@"; do
 		"--mousepad")
 			bold_message "Mousepad installation"
 			if check_package mousepad; then
-				# How export mousepad configuration ? Commands:
+				# How export mousepad configuration? Commands:
 				# $ dconf dump /org/xfce/mousepad/ > mousepad.settings
 				# $ dconf load /org/xfce/mousepad/ < mousepad.settings
 				cp -v ./.config/dconf/mousepad.settings ~/.config/dconf
@@ -487,6 +469,11 @@ for arg in "$@"; do
 				>&2 echo "Please, install 'git' package"
 				exit 1
 			fi
+		;;
+
+		"--xinitrc")
+			bold_message "~/.xinitrc installation"
+			cp -v ./.xinitrc ~/
 		;;
 
                 "-h" | "--help") usage ;;

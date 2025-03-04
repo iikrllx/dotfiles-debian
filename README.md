@@ -69,7 +69,7 @@ $ ./init --bashrc --bash-completion --local-bin --local-share
 
 Configure Xfce environment and colors:
 ```
-$ ./init --xfce --xfce-hotkeys --xfce-terminal --dircolors
+$ ./init --xfce --xfce-hotkeys --xfce-terminal --dircolors --xinitrc
 ```
 
 Text editors, terminal multiplexer, debuger, file navigation:
