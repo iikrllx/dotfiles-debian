@@ -170,33 +170,63 @@ for arg in "$@"; do
 		;;
 
 		"--install-packages")
-			main=(nano mousepad vim vim-gtk3 gdb tmux mc git git-lfs tig neomutt newsboat \
-			galculator gparted gcc make strace xsel ripgrep bash-completion pkg-config \
-			valgrind locales sudo ssh sshpass systemd-coredump moreutils coreutils \
-			binutils diffutils mawk gawk perl perl-base psmisc dialog whiptail \
-			exuberant-ctags hwinfo indent wipe patch patchutils fakeroot file python3-pip \
-			ca-certificates openssl gpg dnsutils traceroute whois tcpdump nmap wget curl \
-			netcat-traditional net-tools dirmngr nfs-common gettext shc tree lsof vifm \
-			fzf fzy)
+			# Git
+			git=(tig git git-lfs)
 
-			deb=(apt-file dpkg-dev devscripts lintian  cdbs debootstrap pbuilder \
-			dconf-cli automake autoconf dh-make debhelper build-essential autotools-dev \
-			quilt debconf-utils adequate piuparts licensecheck reportbug git-buildpackage \
-			how-can-i-help equivs aptitude duck blhc gobject-introspection)
+			# Mail and News
+			mn=(neomutt newsboat)
 
-			doc=(man-db mandoc manpages manpages-dev manpages-ru manpages-ru-dev \
-			manpages-posix manpages-posix-dev linux-doc gcc-doc info)
+			# Fun
+			fun=(oneko cowsay toilet figlet)
 
-			fonts=(font-manager xfonts-terminus fonts-unifont fonts-hack fonts-glasstty \
-			fonts-ibm-plex)
-
-			other=(task-russian task-russian-desktop gnome-screensaver telegram-desktop \
-			audacious oneko cowsay toilet figlet simplescreenrecorder \
-			firefox-esr firefox-esr-l10n-ru)
-
+			# Virtualization
 			virt=(qemu-system qemu-utils)
 
-			packs=("${main[*]}" "${deb[*]}" "${doc[*]}" "${fonts[*]}" "${other[*]}" "${virt[*]}")
+			# Terminal Tools
+			tt=(mc vim vim-gtk3 vifm nano tmux xterm mousepad unclutter)
+
+			# Fonts
+			fonts=(font-manager fonts-unifont fonts-hack fonts-glasstty \
+			fonts-ibm-plex xfonts-terminus)
+
+			# Documentation
+			doc=(info man-db mandoc gcc-doc manpages linux-doc manpages-dev \
+			manpages-posix manpages-posix-dev)
+
+			# Debian Maintenance
+			deb=(cdbs blhc duck quilt equivs lintian tasksel apt-file dpkg-dev \
+			aptitude piuparts adequate pbuilder debhelper reportbug devscripts \
+			debootstrap licensecheck debconf-utils how-can-i-help \
+			build-essential git-buildpackage live-build)
+
+			# Localization
+			loc=(manpages-ru manpages-ru-dev \
+			task-russian task-russian-desktop firefox-esr-l10n-ru)
+
+			# Network Operations
+			net=(curl wget nmap ssh sshpass tcpdump dnsutils net-tools \
+			netcat-traditional rtorrent dirmngr whois traceroute)
+
+			# Graphic and Multimedia Applications
+			gui=(audacious telegram-desktop gnome-screensaver simplescreenrecorder \
+			system-config-printer firefox-esr galculator gparted)
+
+			# Command Line Utilities
+			clu=(fzf fzy xsel ripgrep bash-completion)
+
+			# Development and Compilation Tools
+			dev=(gdb gcc gawk perl perl-base make cmake strace binutils valgrind pkg-config \
+			gobject-introspection exuberant-ctags autotools-dev pristine-tar automake \
+			autoconf dh-make)
+
+			# System Utilities and Administration
+			sys=(systemd-coredump moreutils whiptail dialog psmisc hwinfo indent patch \
+			wipe file cups fakeroot patchutils python3-pip shc gpg tree lsof gettext \
+			neofetch dconf-cli cryptsetup p7zip-full unzip bzip2 zip nfs-common)
+
+			packs=("${git[*]}" "${mn[*]}" "${fun[*]}" "${virt[*]}" "${tt[*]}" "${fonts[*]}" \
+			"${doc[*]}" "${deb[*]}" "${loc[*]}" "${net[*]}" "${gui[*]}" "${clu[*]}" "${dev[*]}" \
+			"${sys[*]}")
 
 			bold_message "Install useful packages"
 			sudo apt-get update
