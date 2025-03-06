@@ -179,7 +179,7 @@ for arg in "$@"; do
 			deb=(cdbs blhc duck quilt equivs lintian tasksel apt-file dpkg-dev \
 			aptitude piuparts adequate pbuilder debhelper reportbug devscripts \
 			debootstrap licensecheck debconf-utils how-can-i-help \
-			build-essential git-buildpackage live-build)
+			build-essential git-buildpackage live-build synaptic)
 
 			# Localization
 			loc=(manpages-ru manpages-ru-dev \
@@ -187,11 +187,12 @@ for arg in "$@"; do
 
 			# Network Operations
 			net=(curl wget nmap ssh sshpass tcpdump dnsutils net-tools \
-			netcat-traditional rtorrent dirmngr whois traceroute)
+			netcat-traditional traceroute rtorrent dirmngr whois iputils-ping)
 
 			# Graphic and Multimedia Applications
 			gui=(audacious telegram-desktop gnome-screensaver simplescreenrecorder \
-			system-config-printer firefox-esr galculator gparted)
+			system-config-printer simple-scan firefox-esr galculator gparted vlc \
+			pavucontrol ristretto xfburn peek)
 
 			# Command Line Utilities
 			clu=(fzf fzy xsel ripgrep bash-completion)
@@ -204,7 +205,7 @@ for arg in "$@"; do
 			# System Utilities and Administration
 			sys=(systemd-coredump moreutils whiptail dialog psmisc hwinfo indent patch \
 			wipe file cups fakeroot patchutils python3-pip shc gpg tree lsof gettext \
-			neofetch dconf-cli cryptsetup p7zip-full unzip bzip2 zip nfs-common)
+			neofetch dconf-cli cryptsetup p7zip-full unzip bzip2 zip fdisk nfs-common)
 
 			packs=("${git[*]}" "${mn[*]}" "${fun[*]}" "${virt[*]}" "${tt[*]}" "${fonts[*]}" \
 			"${doc[*]}" "${deb[*]}" "${loc[*]}" "${net[*]}" "${gui[*]}" "${clu[*]}" "${dev[*]}" \
