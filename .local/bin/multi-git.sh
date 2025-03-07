@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Execute specified Git commands across all managed projects, such as 'clone',
-# 'pull' or 'status' (simple git operations), for streamlined multi-repo
-# management.
+# Execute specified Git commands across all specified Git projects, such as
+# 'clone', 'pull' or 'status' (simple git operations), for streamlined
+# multi-repo management.
 #
 
 usage()

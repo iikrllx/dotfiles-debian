@@ -88,8 +88,8 @@ The script has other options, but I think you won't need it.
 Location: [.local/bin/](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin)
 
 Few examples:<br/>
-[mygit.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/mygit.sh) -
-manages all my git projects (simple git operations).<br/>
+[multi-git.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/multi-git.sh) -
+manages all specified Git projects (simple Git operations).<br/>
 [crypt.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/crypt.sh) -
 encrypt/decrypt regular file with sensitive information (using a password).<br/>
 [deb-clean.sh](https://github.com/krekhovx/dotfiles-debian/blob/master/.local/bin/deb-clean.sh) -
