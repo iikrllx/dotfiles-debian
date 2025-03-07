@@ -15,8 +15,8 @@ Use AES 256 (Advanced Encryption Standard) cipher
 for symmetric file encrypt/decrypt.
 
   [option]
-  -f, --file <path/to/file>      specify file (regular or openssl)
-  -h, --help                     show this help and exit
+  -f, --file </path/to/file>    specify file (regular or openssl)
+  -h, --help                    show this help and exit
 
 EOF
 

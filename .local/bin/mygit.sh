@@ -5,36 +5,21 @@
 # management.
 #
 
-myenv="$HOME/git/myenv"
-salsa="$HOME/git/salsa"
-
-for dir in "$myenv" "$salsa"; do
-	if [ ! -d "$dir" ]; then
-		echo >&2 "'$dir' directory not exist."
-		exit 1
-	fi
-done
-
 usage()
 {
 if (( $1 )); then
-        >&2 echo "Try '$(basename $0) help' for more information."
+        >&2 echo "Try '$(basename $0) --help' for more information."
         exit 1
 else
 cat << EOF
 $(echo -e "\e[96mUsage: $(basename $0) [options]\e[0m")
 Multiple Git Control (simple git operations).
 
-  clone0         clone my GitHub projects in current directory
-  clone1         clone my favorite Salsa projects in current directory
-
-  pull0          pull from my GitHub projects. all branches
-  pull1          pull from my favorite Salsa projects. all branches
-
-  status0        status from my GitHub projects. current branch
-  status1        status from my favorite Salsa projects. current branch
-
-  help           show this help and exit
+  -ck, --clone-krekhovx                     clone my GitHub projects in current directory
+  -cs, --clone-salsa                        clone my favorite Salsa projects in current directory
+  -p, --pull </path/to/git/projects>        pull from the specified Git projects, all branches
+  -s, --status </path/to/git/projects>      status from the specified Git projects, current branch
+  -h, --help                                show this help and exit
 
 EOF
 
@@ -44,7 +29,13 @@ fi
 
 git_command()
 {
-	path="$1" option="$2"
+	option="$1" path="$2"
+
+	if [ ! -d "$path" ]; then
+		echo >&2 "'$dir' directory not exist."
+		usage 1
+	fi
+
 	current_dirs="$(dirname $(find $path -type d -name '.git') 2>/dev/null)"
 
 	if [ -z "$current_dirs" ]; then
@@ -115,11 +106,9 @@ clone_salsa()
 }
 
 case "$1" in
-	# 0 - means https://github.com/krekhovx my projects
-	# 1 - means https://salsa.debian.org/public my favorite projects
-
-	'clone0')
-		projects=(notes dotfiles-debian chroot-deb-builder ioquake3-linux-install)
+	# clone my GitHub projects
+	'-ck'|'--clone-krekhovx')
+		projects=(notes dotfiles-debian chroot-debianizer ioquake3-linux-install)
 
 		for name in ${projects[*]}; do
 			if [ ! -d "$name" ]; then
@@ -129,7 +118,8 @@ case "$1" in
 		done
 	;;
 
-	'clone1')
+	# clone my favorite Salsa projects
+	'-cs'|'--clone-salsa')
 		misc_packages=(bash mc tmux strace telegram-desktop xterm \
 		aptitude git grub2 pbuilder debootstrap eatmydata)
 
@@ -151,15 +141,17 @@ case "$1" in
 		clone_salsa "trans" "${trans_packages[*]}"
 	;;
 
-	'pull0') git_command "$myenv" "pull" ;;
+	'-p'|'--pull')
+		[ -z "$2" ] && usage 1
+		git_command "pull" "$2"
+	;;
 
-	'pull1') git_command "$salsa" "pull" ;;
+	'-s'|'--status')
+		[ -z "$2" ] && usage 1
+		git_command "status" "$2"
+	;;
 
-	'status0') git_command "$myenv" "status" ;;
-
-	'status1') git_command "$salsa" "status" ;;
-
-	'help') usage 0 ;;
+	'-h'|'--help') usage 0 ;;
 
 	*) usage 1 ;;
 esac
