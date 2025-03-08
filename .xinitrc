@@ -1,2 +1,2 @@
-unclutter -idle 2 &
+unclutter -idle 10 &
 exec startxfce4
