@@ -282,7 +282,7 @@ for arg in "$@"; do
 					fi
 				done
 
-				# all interface all users
+				# all interface, all users
 				echo LANG="en_US.UTF8" | sudo tee /etc/default/locale
 			else
 				>&2 echo "Please, install 'locales' package"
