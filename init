@@ -7,7 +7,7 @@
 # Be careful when running this script on your main machine,
 # it does not create backup dotfiles and may erase your current working environment.
 #
-# After the $ ./init --xfce OR $ ./init --xfce-hotkeys OR $ ./init --xinitrc
+# After the $ ./init --xfce OR $ ./init --xfce-hotkeys OR $ ./init --unclutter
 # need to session restart.
 #
 
@@ -110,7 +110,7 @@ Usage: $(basename $0) [option]
 
   --gitconfig            ~/.gitconfig installation
 
-  --xinitrc              ~/.xinitrc installation
+  --unclutter            unclutter installation
 
   -h, --help             show this help and exit
 
@@ -165,7 +165,7 @@ for arg in "$@"; do
 			virt=(qemu-system qemu-utils)
 
 			# Terminal Tools
-			tt=(mc vim vim-gtk3 vifm nano tmux xterm mousepad unclutter)
+			tt=(mc vim vim-gtk3 vifm nano tmux xterm mousepad unclutter unclutter-startup)
 
 			# Fonts
 			fonts=(font-manager fonts-unifont fonts-hack fonts-glasstty \
@@ -472,9 +472,15 @@ for arg in "$@"; do
 			fi
 		;;
 
-		"--xinitrc")
-			bold_message "~/.xinitrc installation"
-			cp -v ./.xinitrc ~/
+		"--unclutter")
+			bold_message "Unclutter installation"
+			if check_package unclutter && check_package unclutter-startup; then
+				sudo sed -i 's/-idle 1/-idle 4/' /etc/default/unclutter
+			else
+				>&2 echo "Please, install 'unclutter' package"
+				>&2 echo "Please, install 'unclutter-startup' package"
+				exit 1
+			fi
 		;;
 
                 "-h" | "--help") usage ;;
